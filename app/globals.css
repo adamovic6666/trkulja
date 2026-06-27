@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Enigma";
+  src: url("/assets/fonts/EnigmaU.TTF") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Georgia Pro";
+  src: url("/assets/fonts/GEORGIA-PRO.TTF") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Georgia Pro";
+  src: url("/assets/fonts/GEORGIA-PRO-BOLD.TTF") format("truetype");
+  font-display: swap;
+  font-weight: 700;
+}
+
+:root {
+  --font-enigma: "Enigma";
+  --font-georgia-pro: "Georgia Pro";
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #000000;
+}
+
+body {
+  margin: 0;
+  color: #ffffff;
+  background: #000000;
+  font-family: var(--font-georgia-pro), Georgia, serif;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
