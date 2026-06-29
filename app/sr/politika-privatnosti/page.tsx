@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { styles } from "../../components";
+import { Footer, styles } from "../../components";
 import { meta } from "../../data";
 
 export const metadata: Metadata = {
@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function SerbianPrivacyPolicyPage() {
   return (
+    <>
       <main className="bg-black">
         <article className={`${styles.container} max-w-[820px] py-48 text-white`}>
           <h1 className={`${styles.uiText} mb-10 text-[clamp(44px,6vw,76px)] leading-none`}>politika privatnosti i kolačića</h1>
@@ -38,5 +39,7 @@ export default function SerbianPrivacyPolicyPage() {
           <p className="text-white/70">Sve eventualne izmene biće objavljene direktno na ovoj stranici.</p>
         </article>
       </main>
+      <Footer locale="sr" />
+    </>
   );
 }

@@ -7,6 +7,7 @@ import {
   styles,
 } from "../components";
 import { copy, meta, site, story } from "../data";
+import { HomeScrollLayers } from "../HomeScrollLayers";
 
 export const metadata: Metadata = {
   title: meta.sr.home.title,
@@ -19,48 +20,57 @@ export default function SerbianHomePage() {
   const t = copy[locale];
 
   return (
-    <main>
-      <section className="relative isolate min-h-[620px] overflow-hidden max-md:min-h-[390px]">
+    <main className="home-page">
+      <HomeScrollLayers />
+      <section className="home-panel home-hero relative isolate z-[1] min-h-dvh overflow-hidden bg-black">
         <video
-          className="absolute inset-0 -z-20 h-full w-full object-cover"
+          className="home-hero-video absolute inset-0 z-0 h-full w-full object-cover"
           src="/assets/video/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
         />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/25 to-black/80" />
-        <div className="grid min-h-[620px] place-items-center max-md:min-h-[390px]">
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/25 to-black/80" />
+        <div className="home-hero-black absolute inset-0 z-20 bg-black" />
+        <div className="relative z-30 grid min-h-dvh place-items-center">
           <img
-            className="w-[min(480px,42vw)] brightness-0 invert max-md:w-[180px]"
+            className="home-hero-signature w-[min(480px,42vw)] brightness-0 invert max-md:w-[480px]"
             src="/assets/logos/dt potpis.svg"
             alt="Dalibor Trkulja signature"
           />
         </div>
+        <a
+          className="home-scroll-cue absolute bottom-12 left-1/2 z-30 h-11 w-7 -translate-x-1/2 rounded-full border-2 border-white/70"
+          href="#story"
+          aria-label={`Scroll to ${t.nav.story}`}
+        >
+          <span className="absolute left-1/2 top-2 h-2 w-1 -translate-x-1/2 rounded-full bg-white/75" />
+        </a>
       </section>
 
       <section
         id="story"
-        className="relative z-10 -mt-20 w-full rounded-t-[88px] bg-brand-ink px-8 py-20 max-md:-mt-8 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-14 max-md:pt-7"
+        className="home-panel relative z-[2] rounded-t-[88px] bg-brand-ink px-8 py-12 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.homeTitle}</SectionTitle>
-          <div className="mx-auto max-w-[780px] text-[14px] leading-snug text-white max-md:max-w-[240px] max-md:text-[12px]">
+          <div className="mx-auto max-w-[780px] text-[14px] md:text-base leading-snug text-white  max-md:text-[14px]">
             {story[locale].map((paragraph) => (
               <p className="mb-5 max-md:mb-4" key={paragraph}>
                 {paragraph}
               </p>
             ))}
           </div>
-          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl bg-black max-md:mt-7 max-md:w-[min(240px,100%)] max-md:grid-cols-1 max-md:rounded-[24px]">
+          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl bg-black max-md:mt-12 max-md:grid-cols-1 max-md:rounded-[24px]">
             <img
-              className="w-full rounded-4xl object-contain max-md:h-[245px]"
+              className="w-full rounded-4xl object-contain"
               src="/assets/thumbs/Dalibor Trkulja Kovacka Radionica.webp"
               alt="Dalibor Trkulja"
             />
             <div className="grid content-center gap-6 px-14 py-6 max-md:justify-items-center max-md:px-4 max-md:pb-6 max-md:pt-5 max-md:text-center">
               <h3
-                className={`${styles.uiText} m-0 text-[clamp(20px,2.4vw,28px)] leading-tight max-md:text-[24px]`}
+                className={`${styles.uiText} m-0 text-[clamp(20px,2.4vw,28px)] leading-tight`}
               >
                 {t.ctaTitle}
               </h3>
@@ -77,23 +87,23 @@ export default function SerbianHomePage() {
 
       <section
         id="work"
-        className="w-full rounded-t-[88px] bg-black px-8 py-24 max-md:rounded-t-[34px] max-md:px-5 max-md:py-16"
+        className="home-panel relative z-[3] w-full rounded-t-[88px] bg-black px-8 py-24 max-md:rounded-t-[34px] max-md:px-5 max-md:py-16"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.workTitle}</SectionTitle>
-          <p className="mx-auto mb-14 w-[min(780px,100%)] text-[14px] leading-snug text-white max-md:mb-10 max-md:max-w-[240px] max-md:text-[12px]">
+          <p className="mx-auto mb-14 w-[min(780px,100%)] text-[14px] md:text-base leading-snug text-white max-md:mb-10 max-md:text-[14px]">
             {t.productsIntro}
           </p>
           <CategoryGrid locale={locale} />
-          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl max-md:mt-7 max-md:w-[min(240px,100%)] max-md:grid-cols-1 max-md:3xl bg-brand-ink">
+          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl max-md:mt-12 max-md:grid-cols-1 max-md:3xl bg-brand-ink">
             <img
-              className="w-full rounded-4xl object-contain max-md:h-[245px]"
+              className="w-full rounded-4xl object-contain"
               src="/assets/thumbs/Dalibor Trkulja Damaskus Nozevi Sekire.webp"
               alt=""
             />
             <div className="grid content-center gap-7 px-14 py-10 max-md:justify-items-center max-md:px-6 max-md:py-8 max-md:text-center">
               <h3
-                className={`${styles.uiText} m-0 text-[clamp(24px,2.5vw,34px)] leading-tight max-md:text-[24px]`}
+                className={`${styles.uiText} m-0 text-[clamp(24px,2.5vw,34px)] leading-tight`}
               >
                 {t.videoTitle}
               </h3>
@@ -108,7 +118,7 @@ export default function SerbianHomePage() {
         </div>
       </section>
 
-      <ContactSection locale={locale} />
+      <ContactSection locale={locale} className="home-panel z-[4]" />
     </main>
   );
 }
