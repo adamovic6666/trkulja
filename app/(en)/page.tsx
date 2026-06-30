@@ -35,34 +35,35 @@ export default function HomePage() {
         <div className="home-hero-black absolute inset-0 z-20 bg-black" />
         <div className="relative z-30 grid min-h-dvh place-items-center">
           <img
-            className="home-hero-signature w-[min(480px,42vw)] brightness-0 invert max-md:w-[480px]"
+            className="home-hero-signature w-[min(220px,46vw)] brightness-0 invert"
             src="/assets/logos/dt potpis.svg"
             alt="Dalibor Trkulja signature"
           />
         </div>
         <a
-          className="home-scroll-cue absolute bottom-12 left-1/2 z-30 h-11 w-7 -translate-x-1/2 rounded-full border-2 border-white/70"
+          className="home-scroll-cue absolute bottom-[calc(env(safe-area-inset-bottom)+4rem)] left-1/2 z-30 h-10 w-9 -translate-x-1/2 max-md:bottom-[calc(env(safe-area-inset-bottom)+5.5rem)]"
           href="#story"
           aria-label={`Scroll to ${t.nav.story}`}
         >
-          <span className="absolute left-1/2 top-2 h-2 w-1 -translate-x-1/2 rounded-full bg-white/75" />
+          <span aria-hidden="true" />
+          <span aria-hidden="true" />
         </a>
       </section>
 
       <section
         id="story"
-        className="home-panel relative z-[2] rounded-t-[88px] bg-brand-ink px-8 py-12 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
+        className="home-panel relative z-[2] rounded-t-[88px] bg-brand-ink px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.homeTitle}</SectionTitle>
-          <div className="mx-auto max-w-[780px] text-[14px] md:text-base leading-snug text-white max-md:text-[14px]">
+          <div className="mx-auto max-w-[780px] text-base leading-snug text-white">
             {story[locale].map((paragraph) => (
               <p className="mb-5 max-md:mb-4" key={paragraph}>
                 {paragraph}
               </p>
             ))}
           </div>
-          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl bg-black max-md:mt-12 max-md:grid-cols-1 max-md:3xl">
+          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl bg-brand-card max-md:mt-12 max-md:grid-cols-1 max-md:3xl">
             <img
               className="w-full rounded-4xl object-contain"
               src="/assets/thumbs/Dalibor Trkulja Kovacka Radionica.webp"
@@ -70,7 +71,7 @@ export default function HomePage() {
             />
             <div className="grid content-center gap-6 px-14 py-6 max-md:justify-items-center max-md:px-4 max-md:pb-6 max-md:pt-5 max-md:text-center">
               <h3
-                className={`${styles.uiText} m-0 text-[clamp(20px,2.4vw,28px)] leading-tight max-w-[220px] md:max-w-none`}
+                className={`${styles.uiText} m-0 text-[clamp(24px,2.4vw,28px)] leading-tight max-w-[220px] md:max-w-none`}
               >
                 {t.ctaTitle}
               </h3>
@@ -87,15 +88,15 @@ export default function HomePage() {
 
       <section
         id="work"
-        className="home-panel relative z-[3] w-full rounded-t-[88px] bg-black px-8 py-12 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
+        className="home-panel relative z-[3] w-full rounded-t-[88px] bg-black px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.workTitle}</SectionTitle>
-          <p className="mx-auto mb-14 w-[min(780px,100%)] text-[14px] md:text-base leading-snug text-white max-md:mb-10 max-md:text-[14px]">
+          <p className="mx-auto mb-14 w-[min(780px,100%)] text-base leading-snug text-white max-md:mb-10">
             {t.productsIntro}
           </p>
           <CategoryGrid locale={locale} />
-          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl max-md:mt-12 max-md:grid-cols-1 max-md:3xl bg-brand-ink">
+          <div className="mx-auto mt-14 grid w-[min(760px,100%)] grid-cols-[320px_1fr] gap-3 rounded-4xl max-md:mt-12 max-md:grid-cols-1 max-md:3xl bg-brand-card">
             <img
               className="w-full rounded-4xl object-contain"
               src="/assets/thumbs/Dalibor Trkulja Damaskus Nozevi Sekire.webp"

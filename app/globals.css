@@ -72,16 +72,41 @@ body:has(.home-page) .site-header {
   opacity: 0;
 }
 
-.home-scroll-cue::after {
+.home-scroll-cue span {
   position: absolute;
   left: 50%;
-  bottom: -10px;
-  width: 8px;
-  height: 8px;
-  border-right: 2px solid rgba(255, 255, 255, 0.7);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.7);
-  content: "";
+  width: 18px;
+  height: 18px;
+  border-right: 2px solid rgba(255, 255, 255, 0.45);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.45);
+  animation: home-scroll-arrow 1.8s infinite;
   transform: translateX(-50%) rotate(45deg);
+}
+
+.home-scroll-cue span:nth-child(1) {
+  top: 0;
+  animation-delay: 0s;
+}
+
+.home-scroll-cue span:nth-child(2) {
+  top: 13px;
+  animation-delay: 0.18s;
+}
+
+@keyframes home-scroll-arrow {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -8px) rotate(45deg);
+  }
+
+  45% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 8px) rotate(45deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -105,5 +130,10 @@ body:has(.home-page) .site-header {
   body:has(.home-page) .site-header,
   .home-scroll-cue {
     transform: translate(-50%, 0);
+  }
+
+  .home-scroll-cue span {
+    animation: none;
+    opacity: 1;
   }
 }

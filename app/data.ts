@@ -124,7 +124,7 @@ export const copy = {
     heroSignature: "forging fire",
     ctaTitle: "custom handmade knives, axes & more",
     callNow: "call now",
-    videoTitle: "check out my latest videos",
+    videoTitle: "check out my latest work",
     youtube: "YouTube",
     productsTitle: "my work",
     productsIntro:
@@ -154,7 +154,7 @@ export const copy = {
   sr: {
     nav: { story: "o meni", work: "proizvodi", contact: "kontakt" },
     homeTitle: "moja priča",
-    workTitle: "proizvodi",
+    workTitle: "moji proizvodi",
     heroSignature: "kovanje",
     ctaTitle: "unikatna ručna izrada sečiva",
     callNow: "pozovite",

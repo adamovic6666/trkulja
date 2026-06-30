@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileMenu } from "./MobileMenu";
 import { categories, copy, Locale, Product, site } from "./data";
 
 const localePaths = {
@@ -22,138 +23,79 @@ const uiText = "font-enigma font-normal lowercase";
 export function Header({ locale }: { locale: Locale }) {
   const t = copy[locale];
   const paths = localePaths[locale];
-  const otherLocale = locale === "en" ? "sr" : "en";
-
   return (
-    <header
-      className={`${uiText} site-header fixed left-1/2 top-10 z-30 grid min-h-[72px] w-[min(1080px,calc(100vw-40px))] -translate-x-1/2 grid-cols-[190px_1fr_170px] items-center rounded-full bg-white px-5 py-2 text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] max-md:top-8 max-md:w-[min(750px,calc(100vw-56px))] max-md:grid-cols-[1fr_auto] max-md:px-7`}
-    >
-      <Link
-        className="inline-flex items-center"
-        href={paths.home}
-        aria-label="Dalibor Trkulja"
-      >
-        <img
-          className="h-auto md:w-28 max-md:w-[120px] -ml-4 md:-ml-1"
-          src="/assets/logos/Trkulja Logo Main Black.svg"
-          alt="Dalibor Trkulja"
-        />
-      </Link>
-      <nav
-        className="flex items-center justify-center gap-20 max-md:hidden text-xl"
-        aria-label="Primary navigation"
-      >
-        <Link className="hover:text-brand-header" href={`${paths.home}#story`}>
-          {t.nav.story}
-        </Link>
-        <Link className="hover:text-brand-header" href={paths.products}>
-          {t.nav.work}
-        </Link>
-        <Link className="hover:text-brand-header" href={paths.contact}>
-          {t.nav.contact}
-        </Link>
-      </nav>
-      <div
-        className="flex items-center justify-end gap-4 max-md:hidden pr-4"
-        aria-label="Language switcher"
+    <>
+      <header
+        className={`${uiText} site-header fixed left-1/2 top-10 z-30 grid min-h-[72px] w-[min(1080px,calc(100vw-40px))] -translate-x-1/2 grid-cols-[190px_1fr_170px] items-center rounded-full bg-white px-5 py-2 text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] max-md:hidden`}
       >
         <Link
-          className={
-            locale === "en" ? "text-brand-header" : "hover:text-brand-header"
-          }
-          href="/"
+          className="inline-flex items-center"
+          href={paths.home}
+          aria-label="Dalibor Trkulja"
         >
-          eng
+          <img
+            className="h-auto w-28 -ml-1"
+            src="/assets/logos/Trkulja Logo Main Black.svg"
+            alt="Dalibor Trkulja"
+          />
         </Link>
-        <Link
-          className={
-            locale === "sr" ? "text-brand-header" : "hover:text-brand-header"
-          }
-          href="/sr/"
+        <nav
+          className="flex items-center justify-center gap-20 text-xl"
+          aria-label="Primary navigation"
         >
-          srb
-        </Link>
-      </div>
-      <details className="hidden max-md:block">
-        <summary
-          className="list-none [&::-webkit-details-marker]:hidden"
-          aria-label="Open navigation"
-        >
-          <span className="relative block h-9 w-10 cursor-pointer before:absolute before:left-0 before:top-1 before:h-px before:w-10 before:bg-black before:content-[''] after:absolute after:left-0 after:top-7 after:h-px after:w-10 after:bg-black after:content-['']">
-            <span className="absolute left-0 top-4 h-px w-10 bg-black" />
-          </span>
-        </summary>
-        <div className="fixed inset-x-5 top-7 min-h-[min(780px,calc(100vh-56px))] rounded-[36px] bg-white p-6 text-black">
-          <div className="flex items-center justify-between">
-            <Link
-              className="inline-flex items-center"
-              href={paths.home}
-              aria-label="Dalibor Trkulja"
-            >
-              <img
-                className="h-auto w-32"
-                src="/assets/logos/Trkulja Logo Main Black.svg"
-                alt="Dalibor Trkulja"
-              />
-            </Link>
-            <span className="relative block h-8 w-8 before:absolute before:left-1 before:top-4 before:h-0.5 before:w-7 before:rotate-45 before:bg-black before:content-[''] after:absolute after:left-1 after:top-4 after:h-0.5 after:w-7 after:-rotate-45 after:bg-black after:content-['']" />
-          </div>
-          <nav
-            className="mt-32 grid justify-items-center gap-12 text-[clamp(42px,10vw,64px)] leading-none"
-            aria-label="Mobile navigation"
+          <Link
+            className="hover:text-brand-header"
+            href={`${paths.home}#story`}
           >
-            <Link href={`${paths.home}#story`}>{t.nav.story}</Link>
-            <Link href={paths.products}>{t.nav.work}</Link>
-            <Link href={paths.contact}>{t.nav.contact}</Link>
-            <Link href={otherLocale === "sr" ? "/sr/" : "/"}>
-              {otherLocale === "sr" ? "srb" : "eng"}
-            </Link>
-          </nav>
-          <div className="mt-24 flex justify-center gap-7">
-            <IconLink
-              href={site.socials.facebook}
-              icon="facebook"
-              label="Facebook"
-              invert
-            />
-            <IconLink
-              href={site.socials.instagram}
-              icon="instagram"
-              label="Instagram"
-              invert
-            />
-            <IconLink
-              href={site.socials.tiktok}
-              icon="tiktok"
-              label="TikTok"
-              invert
-            />
-            <IconLink
-              href={site.socials.youtube}
-              icon="youtube"
-              label="YouTube"
-              invert
-            />
-          </div>
+            {t.nav.story}
+          </Link>
+          <Link className="hover:text-brand-header" href={paths.products}>
+            {t.nav.work}
+          </Link>
+          <Link className="hover:text-brand-header" href={paths.contact}>
+            {t.nav.contact}
+          </Link>
+        </nav>
+        <div
+          className="flex items-center justify-end gap-4 pr-4"
+          aria-label="Language switcher"
+        >
+          <Link
+            className={
+              locale === "en" ? "text-brand-header" : "hover:text-brand-header"
+            }
+            href="/"
+          >
+            eng
+          </Link>
+          <Link
+            className={
+              locale === "sr" ? "text-brand-header" : "hover:text-brand-header"
+            }
+            href="/sr/"
+          >
+            srb
+          </Link>
         </div>
-      </details>
-    </header>
+      </header>
+      <MobileMenu locale={locale} />
+    </>
   );
 }
 
 export function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
-      className={`${uiText} mx-auto mb-14 grid w-[min(780px,100%)] justify-items-center text-center text-[clamp(24px,3vw,36px)] leading-none max-md:mb-12 max-md:text-[24px]`}
+      className={`${uiText} mx-auto mb-14 grid w-[min(780px,100%)] justify-items-center text-center text-[clamp(24px,3vw,36px)] leading-none max-md:mb-12 max-md:text-[28px]`}
     >
       <span>{children}</span>
       <span className="mt-3 grid w-full grid-cols-[1fr_auto_1fr] items-center gap-3">
-        <span className="h-[2px] bg-white/40" />
+        <span className="h-[1px] bg-white" />
         <span
-          className="relative block size-2.5 before:absolute before:left-0 before:top-1/2 before:h-[2px] before:w-full before:-translate-y-1/2 before:rotate-45 before:bg-white/45 before:content-[''] after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-full after:-translate-y-1/2 after:-rotate-45 after:bg-white/45 after:content-['']"
+          className="relative block size-2.5 before:absolute before:left-0 before:top-1/2 before:h-[2px] before:w-full before:-translate-y-1/2 before:rotate-45 before:bg-white before:content-[''] after:absolute after:left-0 after:top-1/2 after:h-[2px] after:w-full after:-translate-y-1/2 after:-rotate-45 after:bg-white after:content-['']"
           aria-hidden="true"
         />
-        <span className="h-[2px] bg-white/40" />
+        <span className="h-[1px] bg-white" />
       </span>
     </h2>
   );
@@ -164,7 +106,7 @@ export function CategoryGrid({ locale }: { locale: Locale }) {
     <div className="mx-auto grid w-[min(780px,100%)] grid-cols-3 gap-9 max-md:grid-cols-1 max-md:gap-8">
       {categories.map((category) => (
         <Link
-          className={`${uiText} grid rounded-3xl bg-brand-ink text-center text-white no-underline transition hover:-translate-y-1 hover:bg-brand-charcoal`}
+          className={`${uiText} grid rounded-3xl bg-brand-card text-center text-white no-underline transition hover:-translate-y-1 hover:bg-brand-charcoal`}
           href={category.href[locale]}
           key={category.slug}
         >
@@ -173,7 +115,7 @@ export function CategoryGrid({ locale }: { locale: Locale }) {
             src={category.thumb}
             alt=""
           />
-          <span className="block px-1 pt-8 pb-6 text-[clamp(20px,2.4vw,28px)] leading-none">
+          <span className="block px-1 pt-8 pb-6 text-[clamp(24px,2.4vw,28px)] leading-none">
             {copy[locale].categories[category.slug]}
           </span>
         </Link>
@@ -196,7 +138,7 @@ export function ContactSection({
       id="contact"
       className={`mx-auto overflow-hidden rounded-t-[88px] bg-brand-ink max-md:rounded-t-[34px] ${className}`}
     >
-      <div className="mx-auto w-full max-w-[960px] py-20 max-md:px-5 max-md:py-16">
+      <div className="mx-auto w-full max-w-[960px] pt-20 pb-16 max-md:px-5 max-md:py-12">
         <SectionTitle>{t.contactTitle}</SectionTitle>
         <div className="mx-auto grid w-[min(780px,100%)] grid-cols-[minmax(320px,460px)_minmax(180px,1fr)] items-center gap-16 max-md:grid-cols-1 max-md:gap-10">
           <div className="relative aspect-[8/6] overflow-hidden rounded-[22px] bg-[#eeeeee]">
@@ -219,9 +161,9 @@ export function ContactDetails({ locale }: { locale: Locale }) {
   const t = copy[locale];
 
   return (
-    <div className="text-[13px] md:text-base leading-relaxed text-white">
+    <div className="text-base leading-relaxed text-white">
       <div className="grid gap-3">
-        <h3 className="text-[14px] md:text-[18px] font-bold leading-relaxed">
+        <h3 className="text-[18px] font-bold leading-relaxed">
           Dalibor Trkulja
         </h3>
         <p>{site.address[locale]}</p>
@@ -233,9 +175,7 @@ export function ContactDetails({ locale }: { locale: Locale }) {
         </p>
       </div>
       <div className="mt-8 grid gap-2">
-        <h4 className="mb-1 text-[14px] md:text-[18px] font-bold">
-          {t.follow}
-        </h4>
+        <h4 className="mb-1 md:text-[18px] font-bold">{t.follow}</h4>
         <SocialRow
           href={site.socials.facebook}
           icon="facebook"
@@ -269,7 +209,7 @@ export function ProductGrid({
 
         return (
           <article
-            className="grid overflow-hidden rounded-3xl bg-brand-ink text-white"
+            className="grid overflow-hidden rounded-3xl bg-brand-card text-white"
             key={product.id}
           >
             <img
@@ -380,10 +320,12 @@ export function Footer({ locale }: { locale: Locale }) {
   const paths = localePaths[locale];
 
   return (
-    <footer className="relative z-10 bg-brand-black py-4 text-[13px] text-white">
-      <div className="mx-auto flex w-[min(1080px,calc(100vw-40px))] items-center justify-between gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
+    <footer className="relative pb-4 md:pb-6 text-[12px] text-white">
+      <div className="mx-auto flex w-[min(1080px,calc(100vw-40px))] items-center justify-center gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 max-md:flex-col max-md:gap-3">
-          <span>Copyright © 2021-2026. Dalibor Trkulja. All rights reserved</span>
+          <span>
+            Copyright © 2021-2026 Dalibor Trkulja. All rights reserved
+          </span>
           <span className="max-md:hidden">|</span>
           <span>
             Design &amp; Code:{" "}
@@ -392,6 +334,8 @@ export function Footer({ locale }: { locale: Locale }) {
             </a>
           </span>
         </div>
+        <span className="max-md:hidden">|</span>
+
         <Link className="underline max-md:block" href={paths.privacy}>
           {copy[locale].privacy}
         </Link>

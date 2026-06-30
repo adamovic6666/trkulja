@@ -7,10 +7,11 @@ const config: Config = {
       colors: {
         brand: {
           black: "#000000",
-          ink: "#1A1A1A",
-          charcoal: "#333333",
+          ink: "#262626",
+          charcoal: "#666666",
           header: "#666666",
           white: "#FFFFFF",
+          card: "#515151",
         },
       },
       fontFamily: {

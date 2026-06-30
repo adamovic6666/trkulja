@@ -23,7 +23,7 @@ export default function ContactPage() {
             <p className="mx-auto mb-14 max-w-[770px] text-[15px] text-white/70">
               {copy[locale].contactIntro}
             </p>
-            <div className="grid grid-cols-2 items-center gap-16 rounded-4xl bg-brand-ink p-14 md:grid-cols-1 md:p-8">
+            <div className="grid grid-cols-2 items-center gap-16 rounded-4xl bg-brand-card p-14 md:grid-cols-1 md:p-8">
               <a
                 className="min-h-[330px] overflow-hidden rounded-[22px] bg-[#f3f3f3]"
                 href="https://maps.google.com/?q=Krajiska+4+Indjija+Serbia"
