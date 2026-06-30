@@ -33,7 +33,7 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/25 to-black/80" />
         <div className="home-hero-black absolute inset-0 z-20 bg-black" />
-        <div className="relative z-30 grid min-h-dvh place-items-center">
+        <div className="relative z-30 grid min-h-dvh place-items-center max-md:pb-[88px]">
           <img
             className="home-hero-signature w-[min(220px,46vw)] brightness-0 invert"
             src="/assets/logos/dt potpis.svg"
