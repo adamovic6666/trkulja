@@ -42,8 +42,8 @@ export function MobileMenu({ locale }: { locale: Locale }) {
 
   return (
     <div
-      className={`site-header fixed left-1/2 top-8 z-40 hidden w-[min(750px,calc(100vw-40px))] -translate-x-1/2 overflow-hidden rounded-[36px] bg-white font-enigma font-normal lowercase text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] transition-[height] duration-[600ms] ease-[cubic-bezier(.65,0,.35,1)] max-md:block ${
-        isOpen ? "h-[min(720px,calc(100dvh-56px))]" : "h-[72px]"
+      className={`site-header fixed left-1/2 top-8 z-40 hidden w-[min(750px,calc(100vw-24px))] -translate-x-1/2 overflow-hidden rounded-[36px] bg-white font-enigma font-normal lowercase text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] transition-[height] duration-[600ms] ease-[cubic-bezier(.65,0,.35,1)] max-md:block ${
+        isOpen ? "h-[min(720px,calc(100dvh-25dvh))]" : "h-[72px]"
       }`}
       id={menuId}
     >

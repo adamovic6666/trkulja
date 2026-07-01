@@ -152,7 +152,7 @@ export const copy = {
     },
   },
   sr: {
-    nav: { story: "o meni", work: "proizvodi", contact: "kontakt" },
+    nav: { story: "moja priča", work: "moji proizvodi", contact: "kontakt" },
     homeTitle: "moja priča",
     workTitle: "moji proizvodi",
     heroSignature: "kovanje",

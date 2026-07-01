@@ -70,9 +70,7 @@ export default function SerbianHomePage() {
               alt="Dalibor Trkulja"
             />
             <div className="grid content-center gap-6 px-14 py-6 max-md:justify-items-center max-md:px-4 max-md:pb-6 max-md:pt-5 max-md:text-center">
-              <h3
-                className={`${styles.uiText} m-0 text-[clamp(24px,2.4vw,28px)] leading-tight`}
-              >
+              <h3 className={`${styles.uiText} m-0 text-[28px] leading-tight`}>
                 {t.ctaTitle}
               </h3>
               <a
@@ -104,7 +102,7 @@ export default function SerbianHomePage() {
             />
             <div className="grid content-center gap-7 px-14 py-10 max-md:justify-items-center max-md:px-6 max-md:py-8 max-md:text-center">
               <h3
-                className={`${styles.uiText} m-0 text-[clamp(24px,2.5vw,34px)] leading-tight`}
+                className={`${styles.uiText} m-0 text-[clamp(28px,2.5vw,34px)] leading-tight`}
               >
                 {t.videoTitle}
               </h3>

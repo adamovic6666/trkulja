@@ -115,7 +115,7 @@ export function CategoryGrid({ locale }: { locale: Locale }) {
             src={category.thumb}
             alt=""
           />
-          <span className="block px-1 pt-8 pb-6 text-[clamp(24px,2.4vw,28px)] leading-none">
+          <span className="block px-1 pt-8 pb-8 md:pb-6 text-[28px] leading-none">
             {copy[locale].categories[category.slug]}
           </span>
         </Link>
@@ -175,7 +175,7 @@ export function ContactDetails({ locale }: { locale: Locale }) {
         </p>
       </div>
       <div className="mt-8 grid gap-2">
-        <h4 className="mb-1 md:text-[18px] font-bold">{t.follow}</h4>
+        <h4 className="mb-1 text-[18px] font-bold">{t.follow}</h4>
         <SocialRow
           href={site.socials.facebook}
           icon="facebook"

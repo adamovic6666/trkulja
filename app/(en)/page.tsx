@@ -71,7 +71,7 @@ export default function HomePage() {
             />
             <div className="grid content-center gap-6 px-14 py-6 max-md:justify-items-center max-md:px-4 max-md:pb-6 max-md:pt-5 max-md:text-center">
               <h3
-                className={`${styles.uiText} m-0 text-[clamp(24px,2.4vw,28px)] leading-tight max-w-[220px] md:max-w-none`}
+                className={`${styles.uiText} m-0 text-[28px] leading-tight max-w-[220px] md:max-w-none`}
               >
                 {t.ctaTitle}
               </h3>
@@ -104,7 +104,7 @@ export default function HomePage() {
             />
             <div className="grid content-center gap-7 px-14 py-10 max-md:justify-items-center max-md:px-6 max-md:py-8 max-md:text-center">
               <h3
-                className={`${styles.uiText} m-0 text-[clamp(24px,2.5vw,34px)] leading-tight`}
+                className={`${styles.uiText} m-0 text-[clamp(28px,2.5vw,34px)] leading-tight`}
               >
                 {t.videoTitle}
               </h3>
