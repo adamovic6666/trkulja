@@ -8,35 +8,7 @@ viewBox="8470 8777 12691 3316"
   <style type="text/css">
    <![CDATA[
     .fil0 {
-      animation: signature-draw 2.2s cubic-bezier(.65, 0, .35, 1) forwards, signature-fill .55s ease forwards 1.45s;
-      fill: transparent;
-      stroke: #373737;
-      stroke-dasharray: 22000;
-      stroke-dashoffset: 22000;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 90;
-    }
-
-    @keyframes signature-draw {
-      to {
-        stroke-dashoffset: 0;
-      }
-    }
-
-    @keyframes signature-fill {
-      to {
-        fill: #373737;
-        stroke-width: 0;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .fil0 {
-        animation: none;
-        fill: #373737;
-        stroke-width: 0;
-      }
+      fill: #373737;
     }
    ]]>
   </style>

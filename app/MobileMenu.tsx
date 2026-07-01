@@ -42,7 +42,7 @@ export function MobileMenu({ locale }: { locale: Locale }) {
 
   return (
     <div
-      className={`site-header fixed left-1/2 top-8 z-40 hidden w-[min(750px,calc(100vw-24px))] -translate-x-1/2 overflow-hidden rounded-[36px] bg-white font-enigma font-normal lowercase text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] transition-[height] duration-[600ms] ease-[cubic-bezier(.65,0,.35,1)] max-md:block ${
+      className={`site-header fixed left-1/2 top-8 z-40 hidden w-[min(750px,calc(100vw-16px))] -translate-x-1/2 overflow-hidden rounded-[36px] bg-white font-enigma font-normal lowercase text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] transition-[height] duration-[600ms] ease-[cubic-bezier(.65,0,.35,1)] max-md:block ${
         isOpen ? "h-[min(720px,calc(100dvh-25dvh))]" : "h-[72px]"
       }`}
       id={menuId}
@@ -86,7 +86,7 @@ export function MobileMenu({ locale }: { locale: Locale }) {
       </div>
 
       <div
-        className={`absolute inset-x-0 bottom-9 top-[116px] grid grid-rows-[1fr_auto] transition duration-200 ${
+        className={`absolute inset-x-0 bottom-9 top-16 grid grid-rows-[1fr_auto] transition duration-200 ${
           isOpen
             ? "translate-y-0 opacity-100 delay-[420ms]"
             : "pointer-events-none -translate-y-3 opacity-0"
