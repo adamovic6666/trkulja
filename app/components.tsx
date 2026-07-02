@@ -111,11 +111,11 @@ export function CategoryGrid({ locale }: { locale: Locale }) {
           key={category.slug}
         >
           <img
-            className="aspect-[5/6] md:aspect-[4/6] w-full rounded-3xl md:object-cover"
+            className="aspect-[3/4] w-full rounded-3xl md:object-cover"
             src={category.thumb}
-            alt=""
+            alt={category.thumb}
           />
-          <span className="block px-1 pt-8 pb-8 md:pb-6 text-[28px] leading-none">
+          <span className="block px-1 py-6 text-[28px] leading-none">
             {copy[locale].categories[category.slug]}
           </span>
         </Link>

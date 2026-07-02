@@ -86,14 +86,14 @@ export function MobileMenu({ locale }: { locale: Locale }) {
       </div>
 
       <div
-        className={`absolute inset-x-0 bottom-9 top-16 grid grid-rows-[1fr_auto] transition duration-200 ${
+        className={`absolute inset-x-0 bottom-9 top-[72px] flex flex-col transition duration-200 ${
           isOpen
             ? "translate-y-0 opacity-100 delay-[420ms]"
             : "pointer-events-none -translate-y-3 opacity-0"
         }`}
       >
         <nav
-          className="grid content-center justify-items-center gap-10 text-[clamp(36px,11vw,56px)] leading-none text-black"
+          className="flex flex-1 flex-col items-center justify-center gap-10 text-[clamp(36px,11vw,56px)] leading-none text-black"
           aria-label="Mobile navigation"
         >
           <Link href={`${paths.home}#story`} onClick={closeMenu}>
@@ -107,21 +107,43 @@ export function MobileMenu({ locale }: { locale: Locale }) {
           </Link>
         </nav>
 
-        <div className="flex justify-center gap-4">
-          {socialLinks.map((social) => (
-            <a
-              className="inline-flex items-center no-underline"
-              href={social.href}
-              aria-label={social.label}
-              key={social.label}
+        <div className="flex flex-col items-center gap-8">
+          <div
+            className="flex items-center gap-6 text-[24px] leading-none"
+            aria-label="Language switcher"
+          >
+            <Link
+              className={locale === "en" ? "text-brand-header" : ""}
+              href="/"
+              onClick={closeMenu}
             >
-              <img
-                className="size-8"
-                src={`/assets/icons/${social.icon}.svg`}
-                alt=""
-              />
-            </a>
-          ))}
+              eng
+            </Link>
+            <Link
+              className={locale === "sr" ? "text-brand-header" : ""}
+              href="/sr/"
+              onClick={closeMenu}
+            >
+              srb
+            </Link>
+          </div>
+
+          <div className="flex justify-center gap-4">
+            {socialLinks.map((social) => (
+              <a
+                className="inline-flex items-center no-underline"
+                href={social.href}
+                aria-label={social.label}
+                key={social.label}
+              >
+                <img
+                  className="size-8"
+                  src={`/assets/icons/${social.icon}.svg`}
+                  alt=""
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -52,7 +52,7 @@ export default function HomePage() {
 
       <section
         id="story"
-        className="home-panel relative z-[2] rounded-t-[88px] bg-brand-ink px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
+        className="home-panel relative z-[2] rounded-t-[88px] bg-brand-ink px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-32"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.homeTitle}</SectionTitle>
@@ -88,7 +88,7 @@ export default function HomePage() {
 
       <section
         id="work"
-        className="home-panel relative z-[3] w-full rounded-t-[88px] bg-black px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5"
+        className="home-panel relative z-[3] w-full rounded-t-[88px] bg-black px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-32"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.workTitle}</SectionTitle>

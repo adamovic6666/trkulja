@@ -152,13 +152,13 @@ export const copy = {
     },
   },
   sr: {
-    nav: { story: "moja priča", work: "moji proizvodi", contact: "kontakt" },
+    nav: { story: "moja priča", work: "moji radovi", contact: "kontakt" },
     homeTitle: "moja priča",
-    workTitle: "moji proizvodi",
+    workTitle: "moji radovi",
     heroSignature: "kovanje",
     ctaTitle: "unikatna ručna izrada sečiva",
     callNow: "pozovite",
-    videoTitle: "pogledajte najnovije video snimke",
+    videoTitle: "pogledajte moje najnovije radove",
     youtube: "YouTube",
     productsTitle: "proizvodi",
     productsIntro:
