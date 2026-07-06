@@ -141,6 +141,24 @@ export const copy = {
     contactPageTitle: "strike while the iron is hot",
     contactIntro:
       "Do you have an idea for a unique knife, axe, or gift? Don't wait - send a price inquiry, and let's forge a plan for your next unique piece. We are here for all your questions.",
+    contactForm: {
+      name: "Enter your full name",
+      email: "Enter your e-mail",
+      subject: "Enter message subject",
+      reason: "Select reason for contact.....",
+      message: "Enter your message here",
+      submit: "Send",
+      submitting: "Sending...",
+      success: "Thank you. Your message has been sent.",
+      error: "The message could not be sent. Please try again.",
+      required: "Please check this field.",
+      reasons: {
+        "price-order": "Price or custom order inquiry",
+        "materials-process": "Materials and making process",
+        collaboration: "Collaboration proposal",
+        feedback: "Praise or feedback",
+      },
+    },
     follow: "Follow me",
     privacy: "Privacy policy",
     labels: { length: "Blade length", handle: "Handle", steel: "Steel", sheath: "Sheath" },
@@ -175,6 +193,24 @@ export const copy = {
     contactPageTitle: "gvožđe se kuje dok je vruće",
     contactIntro:
       "Imate ideju za unikatan nož, sekiru ili poklon? Ne čekajte - pošaljite upit za cenu i hajde da iskujemo plan za vaš sledeći unikat. Tu smo za sva vaša pitanja.",
+    contactForm: {
+      name: "Unesite Vaše ime i prezime",
+      email: "Unesite Vaš e-mail",
+      subject: "Unesite naslov poruke",
+      reason: "Izaberite razlog javljanja.....",
+      message: "Unesite Vašu poruku ovde",
+      submit: "Pošalji",
+      submitting: "Slanje...",
+      success: "Hvala. Vaša poruka je poslata.",
+      error: "Poruka nije poslata. Pokušajte ponovo.",
+      required: "Proverite ovo polje.",
+      reasons: {
+        "price-order": "Pitanje u vezi sa cenom/narudžbinom",
+        "materials-process": "Informacije o izradi i materijalima",
+        collaboration: "Ponuda za saradnju",
+        feedback: "Pohvale ili primedbe",
+      },
+    },
     follow: "Pratite me",
     privacy: "Politika privatnosti",
     labels: { length: "Dužina", handle: "Drška", steel: "Čelik", sheath: "Futrola" },
@@ -182,7 +218,7 @@ export const copy = {
     categories: {
       knives: "noževi",
       axes: "sekire",
-      "other-products": "ostali proizvodi",
+      "other-products": "ostalo",
     },
   },
 };

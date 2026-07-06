@@ -11,9 +11,12 @@ export function HomeScrollLayers() {
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
+    const hasHero = document.querySelector(".home-hero");
     const intro = gsap.timeline();
 
-    if (reduceMotion) {
+    if (!hasHero) {
+      gsap.set(".site-header", { clearProps: "all", opacity: 1 });
+    } else if (reduceMotion) {
       gsap.set(".home-hero-video, .home-hero-signature, .site-header, .home-scroll-cue", {
         clearProps: "all",
         opacity: 1,

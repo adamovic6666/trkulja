@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { ContactDetails, Footer, SectionTitle, styles } from "../../components";
+import { ContactSection, SectionTitle, styles } from "../../components";
 import { copy, meta } from "../../data";
+import { HomeScrollLayers } from "../../HomeScrollLayers";
+import { ContactForm } from "../../ContactForm";
 
 export const metadata: Metadata = {
   title: meta.sr.contact.title,
@@ -16,30 +18,19 @@ export default function SerbianContactPage() {
 
   return (
     <>
-      <main className="pt-48">
-        <section className="bg-black pb-24">
+      <HomeScrollLayers />
+      <main className="pt-40 md:pt-48">
+        <section className="home-panel relative z-[1] bg-black pb-16 md:pb-24">
           <div className={styles.container}>
             <SectionTitle>{copy[locale].contactPageTitle}</SectionTitle>
             <p className="mx-auto mb-14 max-w-[770px] text-[15px] text-white/70">
               {copy[locale].contactIntro}
             </p>
-            <div className="grid grid-cols-2 items-center gap-16 rounded-4xl bg-brand-card p-14 md:grid-cols-1 md:p-8">
-              <a
-                className="min-h-[330px] overflow-hidden rounded-[22px] bg-[#f3f3f3]"
-                href="https://maps.google.com/?q=Krajiska+4+Indjija+Serbia"
-              >
-                <img
-                  className="h-[330px] w-full object-cover opacity-80 grayscale [filter:grayscale(1)_contrast(.86)_brightness(1.08)]"
-                  src="/assets/thumbs/Dalibor Trkulja Kovacka Radionica.webp"
-                  alt="Mapa radionice Dalibora Trkulje"
-                />
-              </a>
-              <ContactDetails locale={locale} />
-            </div>
+            <ContactForm locale={locale} />
           </div>
         </section>
       </main>
-      <Footer locale={locale} />
+      <ContactSection locale={locale} className="home-panel z-[2]" />s
     </>
   );
 }

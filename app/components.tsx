@@ -213,7 +213,7 @@ export function ProductGrid({
             key={product.id}
           >
             <img
-              className="aspect-[1/1.08] w-full object-cover"
+              className="aspect-[3/4] w-full object-cover"
               src={product.image}
               alt={item.name}
             />
