@@ -21,9 +21,9 @@ export default function SerbianProductsPage() {
   const locale = "sr";
 
   return (
-    <main className="pt-40 md:pt-48">
+    <main>
       <HomeScrollLayers />
-      <section className="home-panel relative z-[1] bg-black px-8 pb-20 max-md:px-5">
+      <section className="home-panel relative z-[1] grid min-h-dvh content-start bg-black px-8 pb-24 pt-40 md:pb-32 md:pt-48 max-md:px-5">
         <div className={styles.container}>
           <SectionTitle>{copy[locale].productsTitle}</SectionTitle>
           <p className="mx-auto mb-20 max-w-[770px] text-[15px] text-white/70">

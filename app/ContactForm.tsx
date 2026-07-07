@@ -1,11 +1,12 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   contactFormSchema,
   contactReasonValues,
+  type ContactReason,
   type ContactFormFields,
 } from "./contactSchema";
 import { copy, type Locale } from "./data";
@@ -13,7 +14,10 @@ import { copy, type Locale } from "./data";
 type SubmitStatus = "idle" | "success" | "error";
 
 const fieldClass =
-  "min-h-14 w-full rounded-full border border-white/10 bg-[#333333] px-7 py-4 text-[15px] outline-none transition placeholder:text-white/55 focus:border-white/40 focus:bg-[#3a3a3a] max-md:px-5";
+  "min-h-14 w-full rounded-[22px] border border-white/10 bg-[#333333] px-7 py-4 text-[15px] outline-none transition placeholder:text-white/55 focus:border-white/40 focus:bg-[#3a3a3a] max-md:px-5";
+
+const textareaClass =
+  "min-h-[150px] w-full resize-none rounded-[28px] border border-white/10 bg-[#333333] px-7 py-5 text-[15px] text-white outline-none transition placeholder:text-white/55 focus:border-white/40 focus:bg-[#3a3a3a] max-md:px-5";
 
 export function ContactForm({ locale }: { locale: Locale }) {
   const t = copy[locale].contactForm;
@@ -23,6 +27,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
     handleSubmit,
     reset,
     watch,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormFields>({
     resolver: zodResolver(contactFormSchema),
@@ -113,35 +118,25 @@ export function ContactForm({ locale }: { locale: Locale }) {
       </FieldError>
 
       <FieldError active={Boolean(errors.reason)} message={t.required}>
-        <select
-          className={`${fieldClass} cursor-pointer appearance-none bg-no-repeat pr-12 ${
-            selectedReason ? "text-white" : "text-white/55"
-          }`}
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\")",
-            backgroundPosition: "right 1rem center",
-            backgroundSize: "14px",
-          }}
-          aria-label={t.reason}
-          aria-invalid={Boolean(errors.reason)}
-          defaultValue=""
-          {...register("reason")}
-        >
-          <option className="bg-white text-black" value="" disabled>
-            {t.reason}
-          </option>
-          {contactReasonValues.map((reason) => (
-            <option className="bg-white text-black" value={reason} key={reason}>
-              {t.reasons[reason]}
-            </option>
-          ))}
-        </select>
+        <input type="hidden" {...register("reason")} />
+        <ReasonDropdown
+          label={t.reason}
+          selectedReason={selectedReason as ContactReason | ""}
+          reasons={t.reasons}
+          invalid={Boolean(errors.reason)}
+          onSelect={(reason) =>
+            setValue("reason", reason, {
+              shouldDirty: true,
+              shouldTouch: true,
+              shouldValidate: true,
+            })
+          }
+        />
       </FieldError>
 
       <FieldError active={Boolean(errors.message)} message={t.required}>
         <textarea
-          className={`${fieldClass} min-h-[150px] resize-none text-white rounded-[24px]`}
+          className={textareaClass}
           placeholder={t.message}
           aria-label={t.message}
           aria-invalid={Boolean(errors.message)}
@@ -151,7 +146,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
       <div className="mt-8 grid justify-items-center gap-4">
         <button
-          className="font-enigma inline-flex min-h-10 items-center justify-center rounded-full bg-[#333333] px-8 py-2 font-normal lowercase text-white transition hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-60"
+          className="font-enigma inline-flex min-h-10 items-center justify-center rounded-full bg-brand-charcoal px-7 py-2 font-normal lowercase text-white transition hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-60"
           type="submit"
           disabled={isSubmitting}
         >
@@ -166,6 +161,98 @@ export function ContactForm({ locale }: { locale: Locale }) {
         ) : null}
       </div>
     </form>
+  );
+}
+
+function ReasonDropdown({
+  label,
+  selectedReason,
+  reasons,
+  invalid,
+  onSelect,
+}: {
+  label: string;
+  selectedReason: ContactReason | "";
+  reasons: Record<ContactReason, string>;
+  invalid: boolean;
+  onSelect: (reason: ContactReason) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    function closeOnOutside(event: PointerEvent) {
+      if (!dropdownRef.current?.contains(event.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("pointerdown", closeOnOutside);
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("pointerdown", closeOnOutside);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [open]);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        className={`${fieldClass} flex cursor-pointer items-center justify-between gap-4 text-left ${
+          selectedReason ? "text-white" : "text-white/55"
+        }`}
+        type="button"
+        aria-label={label}
+        aria-invalid={invalid}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        onClick={() => setOpen((current) => !current)}
+      >
+        <span>{selectedReason ? reasons[selectedReason] : label}</span>
+        <span
+          className={`block size-3 shrink-0 border-b-2 border-r-2 border-white transition ${
+            open
+              ? "translate-y-1 rotate-[225deg]"
+              : "-translate-y-0.5 rotate-45"
+          }`}
+          aria-hidden="true"
+        />
+      </button>
+
+      {open ? (
+        <div
+          className="absolute left-4 right-4 top-[calc(100%+2px)] z-20 overflow-hidden bg-white py-2 text-black shadow-[0_18px_45px_rgba(0,0,0,.3)]"
+          role="listbox"
+        >
+          {contactReasonValues.map((reason) => (
+            <button
+              className={`block w-full px-6 py-1.5 text-left text-[15px] transition hover:bg-black/10 ${
+                selectedReason === reason ? "bg-black/10" : ""
+              }`}
+              type="button"
+              role="option"
+              aria-selected={selectedReason === reason}
+              key={reason}
+              onClick={() => {
+                onSelect(reason);
+                setOpen(false);
+              }}
+            >
+              {reasons[reason]}
+            </button>
+          ))}
+        </div>
+      ) : null}
+    </div>
   );
 }
 

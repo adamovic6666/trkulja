@@ -19,8 +19,8 @@ export default function ContactPage() {
   return (
     <>
       <HomeScrollLayers />
-      <main className="pt-40 md:pt-48">
-        <section className="home-panel relative z-[1] bg-black pb-16 md:pb-24">
+      <main>
+        <section className="home-panel relative z-[1] grid min-h-dvh content-start bg-black px-8 pb-24 pt-40 md:pb-32 md:pt-48 max-md:px-5">
           <div className={styles.container}>
             <SectionTitle>{copy[locale].contactPageTitle}</SectionTitle>
             <p className="mx-auto mb-14 max-w-[770px] text-[15px] text-white/70">
