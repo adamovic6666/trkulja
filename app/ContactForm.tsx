@@ -71,7 +71,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
 
   return (
     <form
-      className="mx-auto grid w-[min(780px,100%)] gap-3 md:gap-6"
+      className="mx-auto grid w-[min(780px,100%)] gap-4 md:gap-6"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
     >
