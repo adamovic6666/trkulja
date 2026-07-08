@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   CategoryGrid,
   ContactSection,
@@ -106,12 +105,14 @@ export default function SerbianHomePage() {
               >
                 {t.videoTitle}
               </h3>
-              <Link
+              <a
+                target="_blank"
+                rel="noopener"
                 className={`${styles.uiText} inline-flex min-h-10 justify-self-start rounded-full bg-brand-charcoal px-7 py-2 text-white no-underline max-md:justify-self-center`}
                 href={site.socials.youtube}
               >
                 {t.youtube}
-              </Link>
+              </a>
             </div>
           </div>
         </div>
