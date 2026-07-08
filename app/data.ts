@@ -33,7 +33,7 @@ export const site = {
     facebook: "https://facebook.com/dalibor.trkulja",
     instagram: "https://instagram.com/dalibor_trkulja",
     tiktok: "https://www.tiktok.com/",
-    youtube: "https://www.youtube.com/",
+    youtube: "https://www.youtube.com/channel/UCIniGbq1LjwGuOKzO999NnQ/videos",
     whatsapp: "https://wa.me/381652672932",
     viber: "viber://chat?number=%2B381652672932",
   },
