@@ -168,6 +168,11 @@ export const copy = {
       axes: "axes",
       "other-products": "& more",
     },
+    categoryTitles: {
+      knives: "knives",
+      axes: "axes",
+      "other-products": "other products",
+    },
   },
   sr: {
     nav: { story: "moja priča", work: "moji radovi", contact: "kontakt" },
@@ -219,6 +224,11 @@ export const copy = {
       knives: "noževi",
       axes: "sekire",
       "other-products": "ostalo",
+    },
+    categoryTitles: {
+      knives: "noževi",
+      axes: "sekire",
+      "other-products": "ostali proizvodi",
     },
   },
 };

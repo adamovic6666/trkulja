@@ -5,6 +5,7 @@ import {
   SectionTitle,
   styles,
 } from "../components";
+import { ContactPopup } from "../ContactPopup";
 import { copy, meta, site, story } from "../data";
 import { HomeScrollLayers } from "../HomeScrollLayers";
 
@@ -74,12 +75,12 @@ export default function HomePage() {
               >
                 {t.ctaTitle}
               </h3>
-              <a
-                className={`${styles.uiText} inline-flex min-h-10 justify-self-start rounded-full bg-brand-charcoal px-7 py-2 text-white no-underline max-md:justify-self-center`}
-                href="tel:+381652672932"
-              >
-                {t.callNow}
-              </a>
+              <ContactPopup
+                locale={locale}
+                triggerLabel={t.callNow}
+                showTriggerIcons={false}
+                triggerClassName={`${styles.uiText} inline-flex min-h-10 cursor-pointer justify-self-start rounded-full bg-brand-charcoal px-7 py-2 text-white no-underline max-md:justify-self-center`}
+              />
             </div>
           </div>
         </div>

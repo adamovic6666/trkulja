@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MobileMenu } from "./MobileMenu";
-import { categories, copy, Locale, Product, site } from "./data";
+import { categories, copy, Locale, site } from "./data";
 
 const localePaths = {
   en: {
@@ -193,86 +193,6 @@ export function ContactDetails({ locale }: { locale: Locale }) {
   );
 }
 
-export function ProductGrid({
-  locale,
-  products,
-}: {
-  locale: Locale;
-  products: Product[];
-}) {
-  const t = copy[locale];
-
-  return (
-    <div className="grid grid-cols-3 gap-9 md:mx-auto md:w-[min(360px,100%)] md:grid-cols-1">
-      {products.map((product) => {
-        const item = product[locale];
-
-        return (
-          <article
-            className="grid overflow-hidden rounded-3xl bg-brand-card text-white"
-            key={product.id}
-          >
-            <img
-              className="aspect-[3/4] w-full object-cover"
-              src={product.image}
-              alt={item.name}
-            />
-            <div className="grid gap-3 p-6">
-              <h3 className={`${uiText} m-0 text-3xl leading-none`}>
-                {item.name}
-              </h3>
-              <SpecList locale={locale} product={product} />
-              <div className="mt-2 flex items-center gap-4">
-                <span className={`${uiText} mr-1 text-[28px] leading-none`}>
-                  {t.talk}
-                </span>
-                <IconLink
-                  href={site.phoneHref}
-                  icon="mobile"
-                  label={site.phoneDisplay}
-                />
-                <IconLink
-                  href={site.socials.whatsapp}
-                  icon="whatsapp"
-                  label="WhatsApp"
-                />
-                <IconLink
-                  href={site.socials.viber}
-                  icon="viber"
-                  label="Viber"
-                />
-              </div>
-            </div>
-          </article>
-        );
-      })}
-    </div>
-  );
-}
-
-function SpecList({ locale, product }: { locale: Locale; product: Product }) {
-  const labels = copy[locale].labels;
-  const item = product[locale];
-
-  return (
-    <dl className="m-0 grid gap-1 text-sm text-white/70">
-      <Spec label={labels.length} value={item.length} />
-      <Spec label={labels.handle} value={item.handle} />
-      <Spec label={labels.steel} value={item.steel} />
-      <Spec label={labels.sheath} value={item.sheath} />
-    </dl>
-  );
-}
-
-function Spec({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="grid grid-cols-[88px_1fr] gap-2">
-      <dt className="font-bold">{label}:</dt>
-      <dd className="m-0">{value}</dd>
-    </div>
-  );
-}
-
 function SocialRow({
   href,
   icon,
@@ -286,32 +206,6 @@ function SocialRow({
     <a className="inline-flex items-center gap-2 no-underline" href={href}>
       <img className="size-5 invert" src={`/assets/icons/${icon}.svg`} alt="" />{" "}
       {label}
-    </a>
-  );
-}
-
-function IconLink({
-  href,
-  icon,
-  label,
-  invert = false,
-}: {
-  href: string;
-  icon: string;
-  label: string;
-  invert?: boolean;
-}) {
-  return (
-    <a
-      className="inline-flex items-center gap-2 no-underline"
-      href={href}
-      aria-label={label}
-    >
-      <img
-        className={`${invert ? "h-11 w-11 invert" : "h-8 w-8"}`}
-        src={`/assets/icons/${icon}.svg`}
-        alt=""
-      />
     </a>
   );
 }

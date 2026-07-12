@@ -30,6 +30,7 @@
 html {
   scroll-behavior: smooth;
   background: #000000;
+  scrollbar-gutter: stable;
 }
 
 body {
