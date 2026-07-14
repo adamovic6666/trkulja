@@ -144,7 +144,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
         />
       </FieldError>
 
-      <div className="mt-8 grid justify-items-center gap-4">
+      <div className="grid justify-items-center gap-4">
         <button
           className="font-enigma inline-flex min-h-10 items-center justify-center rounded-full bg-brand-charcoal px-7 py-2 font-normal lowercase text-white transition hover:bg-white hover:text-black disabled:cursor-not-allowed disabled:opacity-60"
           type="submit"
