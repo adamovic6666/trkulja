@@ -30,9 +30,9 @@ export const site = {
     sr: "Krajiška 4, 22320 Inđija, Srbija",
   },
   socials: {
-    facebook: "https://facebook.com/dalibor.trkulja",
-    instagram: "https://instagram.com/dalibor_trkulja",
-    tiktok: "https://www.tiktok.com/",
+    facebook: "https://www.facebook.com/trkuljadalibor",
+    instagram: "https://www.instagram.com/trkuljadalibor",
+    tiktok: "https://www.tiktok.com/@trkuljadalibor",
     youtube: "https://www.youtube.com/channel/UCIniGbq1LjwGuOKzO999NnQ/videos",
     whatsapp: "https://wa.me/381652672932",
     viber: "viber://chat?number=%2B381652672932",
