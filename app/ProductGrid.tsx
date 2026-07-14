@@ -34,9 +34,11 @@ export function ProductGrid({
                 src={product.image}
                 alt={item.name}
               />
-              <span className="block px-1 py-6 text-[28px] leading-none">
-                {item.name}
-              </span>
+              <div className="flex min-h-[84px] items-center justify-center px-3 py-3">
+                <span className="line-clamp-2 text-center text-[22px] leading-tight">
+                  {item.name}
+                </span>
+              </div>
             </button>
           );
         })}
@@ -92,7 +94,7 @@ function ProductModal({
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 grid place-items-center bg-black/80 px-5 py-8 backdrop-blur-sm"
+      className="fixed inset-0 z-50 grid place-items-center bg-black/80 px-5 py-5 backdrop-blur-sm md:py-8"
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
@@ -102,7 +104,7 @@ function ProductModal({
     >
       {products.length > 1 ? (
         <button
-          className="fixed left-2 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center text-white/80 transition hover:text-white sm:left-4 md:left-8"
+          className="fixed left-4 top-1/2 z-10 hidden size-10 -translate-y-1/2 place-items-center text-white/80 transition hover:text-white md:left-8 md:grid"
           type="button"
           aria-label={
             locale === "sr" ? "Prethodni proizvod" : "Previous product"
@@ -116,7 +118,7 @@ function ProductModal({
       ) : null}
 
       <div
-        className="relative grid w-[min(460px,calc(100vw-104px))] justify-items-center overflow-hidden rounded-[24px] bg-[#333333] text-center text-white shadow-[0_22px_60px_rgba(0,0,0,.5)]"
+        className="relative grid max-h-[calc(100dvh-40px)] w-[min(420px,calc(100vw-40px))] justify-items-center overflow-y-auto overflow-x-hidden rounded-[24px] bg-[#333333] text-center text-white shadow-[0_22px_60px_rgba(0,0,0,.5)] md:w-[min(760px,calc(100vw-104px))] md:grid-cols-2 md:justify-items-stretch md:text-left"
         role="dialog"
         aria-modal="true"
         aria-label={item.name}
@@ -137,14 +139,43 @@ function ProductModal({
           />
         </button>
 
-        <img
-          className="aspect-[4/3] w-full object-cover"
-          src={product.image}
-          alt={item.name}
-        />
+        <div className="relative w-full md:h-full">
+          <img
+            className="w-full object-contain md:h-full md:object-cover"
+            src={product.image}
+            alt={item.name}
+          />
 
-        <div className="grid w-full gap-4 px-2 md:px-8 py-6 md:py-8">
-          <h3 className="font-enigma m-0 text-[28px] font-normal leading-tight lowercase">
+          {products.length > 1 ? (
+            <>
+              <button
+                className="absolute left-2 top-1/2 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-black/40 text-white/90 transition hover:text-white md:hidden"
+                type="button"
+                aria-label={
+                  locale === "sr" ? "Prethodni proizvod" : "Previous product"
+                }
+                onClick={() =>
+                  onNavigate((index - 1 + products.length) % products.length)
+                }
+              >
+                <ChevronIcon direction="left" />
+              </button>
+              <button
+                className="absolute right-2 top-1/2 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-black/40 text-white/90 transition hover:text-white md:hidden"
+                type="button"
+                aria-label={
+                  locale === "sr" ? "Sledeći proizvod" : "Next product"
+                }
+                onClick={() => onNavigate((index + 1) % products.length)}
+              >
+                <ChevronIcon direction="right" />
+              </button>
+            </>
+          ) : null}
+        </div>
+
+        <div className="grid w-full gap-3 px-6 py-5 md:content-center md:gap-4 md:px-10 md:py-10">
+          <h3 className="font-enigma m-0 text-[20px] font-normal leading-tight lowercase md:text-[28px]">
             {item.name}
           </h3>
 
@@ -155,11 +186,11 @@ function ProductModal({
             <Spec label={labels.sheath} value={item.sheath} />
           </dl>
 
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-4">
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-4 md:justify-start">
             <span className="font-enigma text-[22px] font-normal leading-none lowercase hidden md:block">
               {t.talk}
             </span>
-            <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-3 md:flex">
               {contactLinks.map((link) => (
                 <a
                   className="inline-flex size-11 items-center justify-center rounded-full transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/70"
@@ -181,7 +212,7 @@ function ProductModal({
 
       {products.length > 1 ? (
         <button
-          className="fixed right-2 top-1/2 z-10 grid size-10 -translate-y-1/2 place-items-center text-white/80 transition hover:text-white sm:right-4 md:right-8"
+          className="fixed right-4 top-1/2 z-10 hidden size-10 -translate-y-1/2 place-items-center text-white/80 transition hover:text-white md:right-8 md:grid"
           type="button"
           aria-label={locale === "sr" ? "Sledeći proizvod" : "Next product"}
           onClick={() => onNavigate((index + 1) % products.length)}

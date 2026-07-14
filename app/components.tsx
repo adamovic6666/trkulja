@@ -18,6 +18,7 @@ const localePaths = {
 };
 
 const container = "mx-auto w-[min(1200px,calc(100vw-40px))]";
+const headerWidth = "w-[min(1080px,calc(100vw-40px))]";
 const uiText = "font-enigma font-normal lowercase";
 
 export function Header({ locale }: { locale: Locale }) {
@@ -26,7 +27,7 @@ export function Header({ locale }: { locale: Locale }) {
   return (
     <>
       <header
-        className={`${uiText} site-header fixed left-1/2 top-10 z-30 grid min-h-[72px] w-[min(1080px,calc(100vw-40px))] -translate-x-1/2 grid-cols-[190px_1fr_170px] items-center rounded-full bg-white px-5 py-2 text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] max-md:hidden`}
+        className={`${uiText} site-header fixed left-1/2 top-10 z-30 grid min-h-[72px] ${headerWidth} -translate-x-1/2 grid-cols-[190px_1fr_170px] items-center rounded-full bg-white px-5 py-2 text-black shadow-[0_10px_35px_rgba(0,0,0,.18)] max-md:hidden`}
       >
         <Link
           className="inline-flex items-center"
@@ -136,59 +137,65 @@ export function ContactSection({
   return (
     <section
       id="contact"
-      className={`mx-auto overflow-hidden rounded-t-[88px] bg-brand-ink max-md:rounded-t-[34px] ${className}`}
+      className={`relative mx-auto flex flex-col overflow-hidden rounded-t-[88px] bg-brand-ink pb-6 pt-20 max-md:rounded-t-[34px] max-md:pb-4 max-md:pt-16 ${className}`}
     >
-      <div className="mx-auto w-full max-w-[960px] pt-20 pb-16 max-md:px-5 max-md:py-12">
-        <SectionTitle>{t.contactTitle}</SectionTitle>
-        <div className="mx-auto grid w-[min(780px,100%)] grid-cols-[minmax(320px,460px)_minmax(180px,1fr)] items-center gap-16 max-md:grid-cols-1 max-md:gap-10">
-          <div className="relative aspect-[8/6] overflow-hidden rounded-[22px] bg-[#eeeeee]">
-            <iframe
-              className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
-              src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
-              title="Dalibor Trkulja workshop map"
-              loading="lazy"
-            />
-          </div>
+      <SectionTitle>{t.contactTitle}</SectionTitle>
+
+      <div className={`${headerWidth} mx-auto`}>
+        <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[32px] bg-[#eeeeee] max-md:aspect-[4/3] max-md:rounded-[22px]">
+          <iframe
+            className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
+            src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
+            title="Dalibor Trkulja workshop map"
+            loading="lazy"
+          />
+        </div>
+        <div className="mt-12 grid grid-cols-2 gap-10 max-md:mt-10 max-md:grid-cols-1 max-md:gap-8">
           <ContactDetails locale={locale} />
+          <FollowDetails locale={locale} />
         </div>
       </div>
-      <Footer locale={locale} />
+
+      <div className="mt-12">
+        <Footer locale={locale} />
+      </div>
     </section>
   );
 }
 
 export function ContactDetails({ locale }: { locale: Locale }) {
+  return (
+    <div className="pointer-events-auto grid gap-3 text-base leading-relaxed text-white">
+      <h3 className="text-[18px] font-bold leading-relaxed">Dalibor Trkulja</h3>
+      <p>{site.address[locale]}</p>
+      <p>
+        T: <a href={site.phoneHref}>{site.phoneDisplay}</a>
+      </p>
+      <p>
+        E: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+    </div>
+  );
+}
+
+export function FollowDetails({ locale }: { locale: Locale }) {
   const t = copy[locale];
 
   return (
-    <div className="text-base leading-relaxed text-white">
-      <div className="grid gap-3">
-        <h3 className="text-[18px] font-bold leading-relaxed">
-          Dalibor Trkulja
-        </h3>
-        <p>{site.address[locale]}</p>
-        <p>
-          T: <a href={site.phoneHref}>{site.phoneDisplay}</a>
-        </p>
-        <p>
-          E: <a href={`mailto:${site.email}`}>{site.email}</a>
-        </p>
-      </div>
-      <div className="mt-8 grid gap-2">
-        <h4 className="mb-1 text-[18px] font-bold">{t.follow}</h4>
-        <SocialRow
-          href={site.socials.facebook}
-          icon="facebook"
-          label="Facebook"
-        />
-        <SocialRow
-          href={site.socials.instagram}
-          icon="instagram"
-          label="Instagram"
-        />
-        <SocialRow href={site.socials.tiktok} icon="tiktok" label="TikTok" />
-        <SocialRow href={site.socials.youtube} icon="youtube" label="YouTube" />
-      </div>
+    <div className="pointer-events-auto grid gap-2 text-white">
+      <h4 className="mb-1 text-[18px] font-bold">{t.follow}</h4>
+      <SocialRow
+        href={site.socials.facebook}
+        icon="facebook"
+        label="Facebook"
+      />
+      <SocialRow
+        href={site.socials.instagram}
+        icon="instagram"
+        label="Instagram"
+      />
+      <SocialRow href={site.socials.tiktok} icon="tiktok" label="TikTok" />
+      <SocialRow href={site.socials.youtube} icon="youtube" label="YouTube" />
     </div>
   );
 }
@@ -214,7 +221,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const paths = localePaths[locale];
 
   return (
-    <footer className="relative pb-4 md:pb-6 text-[12px] text-white">
+    <footer className="relative pb-4 md:pb-0 text-[12px] text-white">
       <div className="mx-auto flex w-[min(1080px,calc(100vw-40px))] items-center justify-center gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 max-md:flex-col max-md:gap-3">
           <span>
