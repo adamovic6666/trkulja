@@ -2,31 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Enigma";
-  src: url("/assets/fonts/EnigmaU.TTF") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Georgia Pro";
-  src: url("/assets/fonts/GEORGIA-PRO.TTF") format("truetype");
-  font-display: swap;
-  font-weight: 400;
-}
-
-@font-face {
-  font-family: "Georgia Pro";
-  src: url("/assets/fonts/GEORGIA-PRO-BOLD.TTF") format("truetype");
-  font-display: swap;
-  font-weight: 700;
-}
-
-:root {
-  --font-enigma: "Enigma";
-  --font-georgia-pro: "Georgia Pro";
-}
-
 html {
   scroll-behavior: smooth;
   background: #000000;
