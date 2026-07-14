@@ -52,7 +52,7 @@ export default function HomePage() {
 
       <section
         id="story"
-        className="home-panel relative z-[2] rounded-t-[88px] bg-brand-ink px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-32"
+        className="home-panel relative z-[2] grid min-h-dvh content-start rounded-t-[88px] bg-brand-ink px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-32"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.homeTitle}</SectionTitle>
@@ -79,7 +79,7 @@ export default function HomePage() {
                 locale={locale}
                 triggerLabel={t.callNow}
                 showTriggerIcons={false}
-                triggerClassName={`${styles.uiText} inline-flex min-h-10 cursor-pointer justify-self-start rounded-full bg-brand-charcoal px-7 py-2 text-white no-underline max-md:justify-self-center`}
+                triggerClassName={`${styles.uiText} inline-flex min-h-14 cursor-pointer items-center justify-self-start rounded-full bg-brand-charcoal px-9 py-3 text-lg text-white no-underline max-md:justify-self-center`}
               />
             </div>
           </div>
@@ -88,7 +88,7 @@ export default function HomePage() {
 
       <section
         id="work"
-        className="home-panel relative z-[3] w-full rounded-t-[88px] bg-black px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-32"
+        className="home-panel relative z-[3] grid w-full min-h-dvh content-start rounded-t-[88px] bg-black px-8 py-16 md:py-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-32"
       >
         <div className="mx-auto w-full max-w-[1200px]">
           <SectionTitle>{t.workTitle}</SectionTitle>
@@ -111,7 +111,7 @@ export default function HomePage() {
               <a
                 target="_blank"
                 rel="noopener"
-                className={`${styles.uiText} inline-flex min-h-10 justify-self-start rounded-full bg-brand-charcoal px-7 py-2 text-white no-underline max-md:justify-self-center`}
+                className={`${styles.uiText} inline-flex min-h-14 items-center justify-self-start rounded-full bg-brand-charcoal px-9 py-3 text-lg text-white no-underline max-md:justify-self-center`}
                 href={site.socials.youtube}
               >
                 {t.youtube}
