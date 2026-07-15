@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const baseUrl = "https://trkulja.rs";
+import { siteUrl as baseUrl } from "./siteConfig";
 
 const routes = [
   {

@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { CookieConsentManager } from "./CookieConsentManager";
 import { enigma, georgiaPro } from "./fonts";
 import "./globals.css";
+import { siteUrl } from "./siteConfig";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://trkulja.rs"),
+  metadataBase: new URL(siteUrl),
   icons: {
     icon: "/assets/logos/Trkulja Logo Favicon Black.svg",
   },

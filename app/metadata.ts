@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-
-const assetBaseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "https://trkulja.rs";
+import { siteUrl } from "./siteConfig";
 
 const openGraphImage = {
-  url: `${assetBaseUrl}/assets/og/trkulja-og.png`,
+  url: `${siteUrl}/assets/og/trkulja-og.png`,
   width: 1200,
   height: 630,
   alt: "Dalibor Trkulja",
