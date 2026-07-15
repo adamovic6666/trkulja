@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   CategoryGrid,
   ContactSection,
@@ -7,15 +6,15 @@ import {
 } from "../../components";
 import { copy, meta } from "../../data";
 import { HomeScrollLayers } from "../../HomeScrollLayers";
+import { createPageMetadata } from "../../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.en.products.title,
   description: meta.en.products.description,
-  alternates: {
-    canonical: "/products/",
-    languages: { en: "/products/", sr: "/sr/proizvodi/" },
-  },
-};
+  canonical: "/products/",
+  languages: { en: "/products/", sr: "/sr/proizvodi/" },
+  locale: "en",
+});
 
 export default function ProductsPage() {
   const locale = "en";

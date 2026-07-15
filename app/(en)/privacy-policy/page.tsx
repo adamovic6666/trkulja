@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import { ContactSection, SectionTitle, styles } from "../../components";
 import { meta } from "../../data";
 import { HomeScrollLayers } from "../../HomeScrollLayers";
+import { createPageMetadata } from "../../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.en.privacy.title,
   description: meta.en.privacy.description,
-  alternates: { canonical: "/privacy-policy/", languages: { en: "/privacy-policy/", sr: "/sr/politika-privatnosti/" } },
-};
+  canonical: "/privacy-policy/",
+  languages: { en: "/privacy-policy/", sr: "/sr/politika-privatnosti/" },
+  locale: "en",
+});
 
 export default function PrivacyPolicyPage() {
   const locale = "en";
@@ -31,7 +33,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <p className="mb-2 font-bold text-white">Data collected automatically (Statistics):</p>
             <p className="mb-6">
-              When you visit the website, the system automatically records anonymous technical data (IP address, browser type, time of visit, and pages opened). This information is used exclusively for visitor statistics through the Google Analytics tool, helping us understand which pages are most visited. This data is not used for your personal identification.
+              If you allow analytics cookies, Google Analytics records technical usage data such as browser type, time of visit, and pages opened. This information helps us understand which pages are most visited and is not used by us to identify you personally. Google Analytics is not loaded if you reject analytics cookies.
             </p>
 
             <h2 className="mb-3 mt-10 text-xl font-bold text-white">2. Data Security</h2>
@@ -56,7 +58,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <p className="mb-2 font-bold text-white">How to disable cookies?</p>
             <p className="mb-6">
-              If you do not want cookies, you can delete or block them at any time through your internet browser settings (Chrome, Firefox, Safari, Edge). Detailed instructions for each browser can be found on the official website{" "}
+              You can accept, reject, or change optional cookie preferences at any time using the Cookie settings link in the website footer. You can also delete or block cookies through your internet browser settings (Chrome, Firefox, Safari, Edge). Detailed instructions for each browser can be found on the official website{" "}
               <a className="underline" href="https://www.aboutcookies.org/" target="_blank" rel="noopener">
                 AboutCookies.org
               </a>.

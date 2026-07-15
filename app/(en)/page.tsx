@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   CategoryGrid,
   ContactSection,
@@ -8,12 +7,15 @@ import {
 import { ContactPopup } from "../ContactPopup";
 import { copy, meta, site, story } from "../data";
 import { HomeScrollLayers } from "../HomeScrollLayers";
+import { createPageMetadata } from "../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.en.home.title,
   description: meta.en.home.description,
-  alternates: { canonical: "/", languages: { en: "/", sr: "/sr/" } },
-};
+  canonical: "/",
+  languages: { en: "/", sr: "/sr/" },
+  locale: "en",
+});
 
 export default function HomePage() {
   const locale = "en";

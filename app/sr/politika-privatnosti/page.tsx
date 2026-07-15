@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import { ContactSection, SectionTitle, styles } from "../../components";
 import { meta } from "../../data";
 import { HomeScrollLayers } from "../../HomeScrollLayers";
+import { createPageMetadata } from "../../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.sr.privacy.title,
   description: meta.sr.privacy.description,
-  alternates: { canonical: "/sr/politika-privatnosti/", languages: { en: "/privacy-policy/", sr: "/sr/politika-privatnosti/" } },
-};
+  canonical: "/sr/politika-privatnosti/",
+  languages: { en: "/privacy-policy/", sr: "/sr/politika-privatnosti/" },
+  locale: "sr",
+});
 
 export default function SerbianPrivacyPolicyPage() {
   const locale = "sr";
@@ -31,7 +33,7 @@ export default function SerbianPrivacyPolicyPage() {
             </p>
             <p className="mb-2 font-bold text-white">Podaci koji se prikupljaju automatski (Statistika):</p>
             <p className="mb-6">
-              Kada posetite sajt, sistem automatski beleži anonimne tehničke podatke (IP adresa, vrsta pregledača, vreme posete i stranice koje ste otvorili). Ove informacije služe isključivo za statistiku poseta kroz alat Google Analytics kako bismo znali koje stranice su najtraženije. Ovi podaci ne služe za Vašu ličnu identifikaciju.
+              Ako dozvolite analitičke kolačiće, Google Analytics beleži tehničke podatke o korišćenju, kao što su vrsta pregledača, vreme posete i otvorene stranice. Ove informacije nam pomažu da razumemo koje stranice su najposećenije i ne koristimo ih za Vašu ličnu identifikaciju. Google Analytics se ne učitava ako odbijete analitičke kolačiće.
             </p>
 
             <h2 className="mb-3 mt-10 text-xl font-bold text-white">2. Sigurnost podataka</h2>
@@ -56,7 +58,7 @@ export default function SerbianPrivacyPolicyPage() {
             </p>
             <p className="mb-2 font-bold text-white">Kako da isključite kolačiće?</p>
             <p className="mb-6">
-              Ukoliko ne želite kolačiće, možete ih u svakom trenutku obrisati ili blokirati kroz podešavanja Vašeg internet pregledača (Chrome, Firefox, Safari, Edge). Detaljna uputstva za svaki pregledač možete pronaći na zvaničnom sajtu{" "}
+              Opcione kolačiće možete prihvatiti, odbiti ili promeniti u bilo kom trenutku putem linka Podešavanja kolačića u podnožju sajta. Kolačiće možete i obrisati ili blokirati kroz podešavanja Vašeg internet pregledača (Chrome, Firefox, Safari, Edge). Detaljna uputstva za svaki pregledač možete pronaći na zvaničnom sajtu{" "}
               <a className="underline" href="https://www.aboutcookies.org/" target="_blank" rel="noopener">
                 AboutCookies.org
               </a>.

@@ -10,6 +10,7 @@ import {
 } from "../../../data";
 import { HomeScrollLayers } from "../../../HomeScrollLayers";
 import { ProductGrid } from "../../../ProductGrid";
+import { createPageMetadata } from "../../../metadata";
 
 const categories: CategorySlug[] = ["knives", "axes", "other-products"];
 const srSlugs = ["nozevi", "sekire", "ostali-proizvodi"];
@@ -27,17 +28,16 @@ export async function generateMetadata({
   const category = getCategoryByLocaleSlug("sr", resolvedParams.category);
   if (!categories.includes(category)) return {};
 
-  return {
+  return createPageMetadata({
     title: meta.sr[category].title,
     description: meta.sr[category].description,
-    alternates: {
-      canonical: `/sr/proizvodi/${resolvedParams.category}/`,
-      languages: {
-        en: `/products/${category}/`,
-        sr: `/sr/proizvodi/${resolvedParams.category}/`,
-      },
+    canonical: `/sr/proizvodi/${resolvedParams.category}/`,
+    languages: {
+      en: `/products/${category}/`,
+      sr: `/sr/proizvodi/${resolvedParams.category}/`,
     },
-  };
+    locale: "sr",
+  });
 }
 
 export default async function SerbianProductCategoryPage({

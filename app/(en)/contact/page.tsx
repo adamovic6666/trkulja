@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
 import { ContactSection, SectionTitle, styles } from "../../components";
 import { ContactForm } from "../../ContactForm";
 import { copy, meta } from "../../data";
 import { HomeScrollLayers } from "../../HomeScrollLayers";
+import { createPageMetadata } from "../../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.en.contact.title,
   description: meta.en.contact.description,
-  alternates: {
-    canonical: "/contact/",
-    languages: { en: "/contact/", sr: "/sr/kontakt/" },
-  },
-};
+  canonical: "/contact/",
+  languages: { en: "/contact/", sr: "/sr/kontakt/" },
+  locale: "en",
+});
 
 export default function ContactPage() {
   const locale = "en";

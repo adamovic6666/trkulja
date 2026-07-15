@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CookieSettingsButton } from "./CookieSettingsButton";
 import { MobileMenu } from "./MobileMenu";
 import { categories, copy, Locale, site } from "./data";
 
@@ -137,11 +138,11 @@ export function ContactSection({
   return (
     <section
       id="contact"
-      className={`relative mx-auto flex flex-col overflow-hidden rounded-t-[88px] bg-brand-ink pb-6 pt-20 max-md:rounded-t-[34px] max-md:pb-4 max-md:pt-16 ${className}`}
+      className={`relative mx-auto flex flex-col overflow-hidden rounded-t-[88px] bg-brand-ink px-8 pb-6 pt-20 max-md:rounded-t-[34px] max-md:px-5 max-md:pb-4 max-md:pt-16 ${className}`}
     >
       <SectionTitle>{t.contactTitle}</SectionTitle>
 
-      <div className={`${headerWidth} mx-auto`}>
+      <div className="mx-auto w-full max-w-[1080px]">
         <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[32px] bg-[#eeeeee] max-md:aspect-[4/3] max-md:rounded-[22px]">
           <iframe
             className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
@@ -222,7 +223,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="relative pb-4 md:pb-0 text-[12px] text-white">
-      <div className="mx-auto flex w-[min(1080px,calc(100vw-40px))] items-center justify-center gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
+      <div className="mx-auto flex w-full max-w-[1080px] items-center justify-center gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 max-md:flex-col max-md:gap-3">
           <span>
             Copyright © 2021-2026 Dalibor Trkulja. All rights reserved
@@ -240,6 +241,10 @@ export function Footer({ locale }: { locale: Locale }) {
         <Link className="underline max-md:block" href={paths.privacy}>
           {copy[locale].privacy}
         </Link>
+        <span className="max-md:hidden">|</span>
+        <CookieSettingsButton
+          label={locale === "sr" ? "Podešavanja kolačića" : "Cookie settings"}
+        />
       </div>
     </footer>
   );

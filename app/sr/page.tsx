@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import {
   CategoryGrid,
   ContactSection,
@@ -8,12 +7,15 @@ import {
 import { ContactPopup } from "../ContactPopup";
 import { copy, meta, site, story } from "../data";
 import { HomeScrollLayers } from "../HomeScrollLayers";
+import { createPageMetadata } from "../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.sr.home.title,
   description: meta.sr.home.description,
-  alternates: { canonical: "/sr/", languages: { en: "/", sr: "/sr/" } },
-};
+  canonical: "/sr/",
+  languages: { en: "/", sr: "/sr/" },
+  locale: "sr",
+});
 
 export default function SerbianHomePage() {
   const locale = "sr";

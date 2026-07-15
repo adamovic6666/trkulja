@@ -10,6 +10,7 @@ import {
 } from "../../../data";
 import { HomeScrollLayers } from "../../../HomeScrollLayers";
 import { ProductGrid } from "../../../ProductGrid";
+import { createPageMetadata } from "../../../metadata";
 
 const categories: CategorySlug[] = ["knives", "axes", "other-products"];
 
@@ -26,17 +27,16 @@ export async function generateMetadata({
   const category = getCategoryByLocaleSlug("en", resolvedParams.category);
   if (!categories.includes(category)) return {};
 
-  return {
+  return createPageMetadata({
     title: meta.en[category].title,
     description: meta.en[category].description,
-    alternates: {
-      canonical: `/products/${category}/`,
-      languages: {
-        en: `/products/${category}/`,
-        sr: `/sr/proizvodi/${category === "knives" ? "nozevi" : category === "axes" ? "sekire" : "ostali-proizvodi"}/`,
-      },
+    canonical: `/products/${category}/`,
+    languages: {
+      en: `/products/${category}/`,
+      sr: `/sr/proizvodi/${category === "knives" ? "nozevi" : category === "axes" ? "sekire" : "ostali-proizvodi"}/`,
     },
-  };
+    locale: "en",
+  });
 }
 
 export default async function ProductCategoryPage({

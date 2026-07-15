@@ -1,17 +1,16 @@
-import type { Metadata } from "next";
 import { ContactSection, SectionTitle, styles } from "../../components";
 import { copy, meta } from "../../data";
 import { HomeScrollLayers } from "../../HomeScrollLayers";
 import { ContactForm } from "../../ContactForm";
+import { createPageMetadata } from "../../metadata";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: meta.sr.contact.title,
   description: meta.sr.contact.description,
-  alternates: {
-    canonical: "/sr/kontakt/",
-    languages: { en: "/contact/", sr: "/sr/kontakt/" },
-  },
-};
+  canonical: "/sr/kontakt/",
+  languages: { en: "/contact/", sr: "/sr/kontakt/" },
+  locale: "sr",
+});
 
 export default function SerbianContactPage() {
   const locale = "sr";
