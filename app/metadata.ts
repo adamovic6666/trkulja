@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
+const assetBaseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "https://trkulja.rs";
+
 const openGraphImage = {
-  url: "/assets/og/trkulja-og.png",
+  url: `${assetBaseUrl}/assets/og/trkulja-og.png`,
   width: 1200,
   height: 630,
   alt: "Dalibor Trkulja",
@@ -20,6 +24,11 @@ export function createPageMetadata({
   languages: Record<string, string>;
   locale: "en" | "sr";
 }): Metadata {
+  const socialDescription =
+    description.length > 125
+      ? `${description.slice(0, 122).trimEnd()}...`
+      : description;
+
   return {
     title,
     description,
@@ -28,7 +37,7 @@ export function createPageMetadata({
       type: "website",
       siteName: "Dalibor Trkulja",
       title,
-      description,
+      description: socialDescription,
       url: canonical,
       locale: locale === "sr" ? "sr_RS" : "en_US",
       alternateLocale: locale === "sr" ? ["en_US"] : ["sr_RS"],
@@ -37,7 +46,7 @@ export function createPageMetadata({
     twitter: {
       card: "summary_large_image",
       title,
-      description,
+      description: socialDescription,
       images: [openGraphImage.url],
     },
   };
