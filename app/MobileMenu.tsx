@@ -93,7 +93,7 @@ export function MobileMenu({ locale }: { locale: Locale }) {
         }`}
       >
         <nav
-          className="flex flex-1 flex-col items-center justify-center gap-10 text-[clamp(36px,11vw,56px)] leading-none text-black"
+          className="flex flex-1 flex-col items-center justify-center gap-10 text-[clamp(28px,7vw,34px)] leading-none text-black"
           aria-label="Mobile navigation"
         >
           <Link href={`${paths.home}#story`} onClick={closeMenu}>

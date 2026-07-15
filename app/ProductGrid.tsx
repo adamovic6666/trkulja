@@ -118,7 +118,7 @@ function ProductModal({
       ) : null}
 
       <div
-        className="relative grid max-h-[calc(100dvh-40px)] w-[min(420px,calc(100vw-40px))] justify-items-center overflow-y-auto overflow-x-hidden rounded-[24px] bg-[#333333] text-center text-white shadow-[0_22px_60px_rgba(0,0,0,.5)] md:w-[min(760px,calc(100vw-104px))] md:grid-cols-2 md:justify-items-stretch md:text-left"
+        className="relative grid max-h-[calc(100dvh-40px)] w-[min(420px,calc(100vw-40px))] justify-items-center overflow-y-auto overflow-x-hidden rounded-[24px] bg-[#333333] text-center text-white shadow-[0_22px_60px_rgba(0,0,0,.5)] md:h-[min(620px,calc(100dvh-64px))] md:w-[min(920px,calc(100vw-104px))] md:grid-cols-2 md:justify-items-stretch md:overflow-hidden md:text-left"
         role="dialog"
         aria-modal="true"
         aria-label={item.name}
@@ -141,7 +141,7 @@ function ProductModal({
 
         <div className="relative w-full md:h-full">
           <img
-            className="w-full object-contain md:h-full md:object-cover"
+            className="w-full rounded-b-[24px] object-contain md:h-full md:rounded-r-[24px] md:object-cover"
             src={product.image}
             alt={item.name}
           />
@@ -174,36 +174,35 @@ function ProductModal({
           ) : null}
         </div>
 
-        <div className="grid w-full gap-3 px-6 py-5 md:content-center md:gap-4 md:px-10 md:py-10">
-          <h3 className="font-enigma m-0 text-[20px] font-normal leading-tight lowercase md:text-[28px]">
-            {item.name}
-          </h3>
+        <div className="flex h-[212px] w-full flex-col gap-3 px-6 py-5 md:grid md:h-full md:grid-rows-[1fr_auto] md:gap-4 md:px-12 md:py-12">
+          <div className="flex flex-col gap-4 md:justify-center">
+            <h3 className="font-enigma m-0 text-[20px] font-normal leading-tight lowercase md:text-[28px]">
+              {item.name}
+            </h3>
 
-          <dl className="m-0 grid gap-1 text-sm text-white/70">
-            <Spec label={labels.length} value={item.length} />
-            <Spec label={labels.handle} value={item.handle} />
-            <Spec label={labels.steel} value={item.steel} />
-            <Spec label={labels.sheath} value={item.sheath} />
-          </dl>
+            <div className="flex items-center justify-between gap-4 md:block">
+              <dl className="m-0 grid gap-1 text-left text-sm text-white/70">
+                <Spec label={labels.length} value={item.length} />
+                <Spec label={labels.handle} value={item.handle} />
+                <Spec label={labels.steel} value={item.steel} />
+                <Spec label={labels.sheath} value={item.sheath} />
+              </dl>
 
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-4 md:justify-start">
+              <div className="flex shrink-0 flex-col items-center gap-0.5 md:hidden">
+                {contactLinks.map((link) => (
+                  <ContactIcon key={link.icon} link={link} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="hidden flex-wrap items-center justify-center gap-4 md:flex md:justify-start">
             <span className="font-enigma text-[22px] font-normal leading-none lowercase hidden md:block">
               {t.talk}
             </span>
             <div className="hidden items-center gap-3 md:flex">
               {contactLinks.map((link) => (
-                <a
-                  className="inline-flex size-11 items-center justify-center rounded-full transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/70"
-                  href={link.href}
-                  aria-label={link.label}
-                  key={link.icon}
-                >
-                  <img
-                    className="size-8"
-                    src={`/assets/icons/${link.icon}.svg`}
-                    alt=""
-                  />
-                </a>
+                <ContactIcon key={link.icon} link={link} />
               ))}
             </div>
           </div>
@@ -222,6 +221,22 @@ function ProductModal({
       ) : null}
     </div>,
     document.body,
+  );
+}
+
+function ContactIcon({ link }: { link: (typeof contactLinks)[number] }) {
+  return (
+    <a
+      className="inline-flex size-8 items-center justify-center rounded-full transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/70 md:size-11"
+      href={link.href}
+      aria-label={link.label}
+    >
+      <img
+        className="size-6 md:size-8"
+        src={`/assets/icons/${link.icon}.svg`}
+        alt=""
+      />
+    </a>
   );
 }
 

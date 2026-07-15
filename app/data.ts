@@ -145,7 +145,7 @@ export const copy = {
       name: "Enter your full name",
       email: "Enter your e-mail",
       subject: "Enter message subject",
-      reason: "Select reason for contact.....",
+      reason: "Select reason for contact...",
       message: "Enter your message here",
       submit: "Send",
       submitting: "Sending...",
@@ -202,7 +202,7 @@ export const copy = {
       name: "Unesite Vaše ime i prezime",
       email: "Unesite Vaš e-mail",
       subject: "Unesite naslov poruke",
-      reason: "Izaberite razlog javljanja.....",
+      reason: "Izaberite razlog javljanja...",
       message: "Unesite Vašu poruku ovde",
       submit: "Pošalji",
       submitting: "Slanje...",
@@ -313,6 +313,7 @@ export const products: Product[] = [
   { id: 36, category: "knives", image: image("Nozevi", "unikatni kamperski noz trkulja dalibor"), sr: { name: "nož za kampovanje", length: "18 cm", handle: "jelenski rog i abonos", steel: "C75 i 15N20", sheath: "Vegetabil koža 3 mm" }, en: { name: "camping knife", length: "18 cm", handle: "deer antler and ebony", steel: "C75 and 15N20", sheath: "Veg-tan leather 3 mm" } },
   { id: 37, category: "knives", image: image("Nozevi", "unikatni lovacki noz dalibor trkulja"), sr: { name: "lovački nož", length: "14 cm", handle: "jelenski rog", steel: "C75 i 15N20", sheath: "Vegetabil koža 3 mm" }, en: { name: "hunting knife", length: "14 cm", handle: "deer antler", steel: "C75 and 15N20", sheath: "Veg-tan leather 3 mm" } },
   { id: 38, category: "knives", image: image("Nozevi", "damask lovacki noz dalibor trkulja kovacnica"), sr: { name: "lovački nož", length: "16 cm", handle: "jelenski rog i fosilizovani hrast", steel: "C75 i 15N20", sheath: "Vegetabil koža 3 mm" }, en: { name: "hunting knife", length: "16 cm", handle: "deer antler and bog oak", steel: "C75 and 15N20", sheath: "Veg-tan leather 3 mm" } },
+  { id: 39, category: "other-products", image: image("Ostalo", "set za odrzavanje nozeva dalibor trkulja"), sr: { name: "set za održavanje sečiva", length: "/", handle: "/", steel: "/", sheath: "/" }, en: { name: "blade maintenance set", length: "/", handle: "/", steel: "/", sheath: "/" } },
 ];
 
 export function getCategoryByLocaleSlug(locale: Locale, slug: string) {
