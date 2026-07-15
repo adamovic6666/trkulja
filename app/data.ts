@@ -163,6 +163,9 @@ export const copy = {
     privacy: "Privacy policy",
     labels: { length: "Blade length", handle: "Handle", steel: "Steel", sheath: "Sheath" },
     talk: "let's talk",
+    talkSubtitle: "Get in touch so we can make something truly special for you.",
+    contactDescription:
+      "Do you have an idea for a unique forged knife, axe, or something else? Let's turn your vision into reality. Feel free to send me photos, sketches, or examples of what you want via Viber or WhatsApp. Based on your references, we can easily determine the design, dimensions, choice of steel and other materials, as well as the final price and delivery date.",
     categories: {
       knives: "knives",
       axes: "axes",
@@ -220,6 +223,9 @@ export const copy = {
     privacy: "Politika privatnosti",
     labels: { length: "Dužina", handle: "Drška", steel: "Čelik", sheath: "Futrola" },
     talk: "pozovi",
+    talkSubtitle: "Javite se da zajedno napravimo nešto zaista posebno za vas.",
+    contactDescription:
+      "Imate ideju za unikatan kovani nož, sekiru ili nešto drugo? Hajde da zajedno pretvorimo vašu viziju u stvarnost. Slobodno mi pošaljite fotografije, skice ili primere onoga što želite putem Vibera ili WhatsApp-a. Na osnovu vaših referenci, lako možemo odrediti dizajn, dimenzije, izbor čelika i drugih materijala, kao i konačnu cenu i rok isporuke.",
     categories: {
       knives: "noževi",
       axes: "sekire",
@@ -314,6 +320,24 @@ export const products: Product[] = [
   { id: 37, category: "knives", image: image("Nozevi", "unikatni lovacki noz dalibor trkulja"), sr: { name: "lovački nož", length: "14 cm", handle: "jelenski rog", steel: "C75 i 15N20", sheath: "Vegetabil koža 3 mm" }, en: { name: "hunting knife", length: "14 cm", handle: "deer antler", steel: "C75 and 15N20", sheath: "Veg-tan leather 3 mm" } },
   { id: 38, category: "knives", image: image("Nozevi", "damask lovacki noz dalibor trkulja kovacnica"), sr: { name: "lovački nož", length: "16 cm", handle: "jelenski rog i fosilizovani hrast", steel: "C75 i 15N20", sheath: "Vegetabil koža 3 mm" }, en: { name: "hunting knife", length: "16 cm", handle: "deer antler and bog oak", steel: "C75 and 15N20", sheath: "Veg-tan leather 3 mm" } },
   { id: 39, category: "other-products", image: image("Ostalo", "set za odrzavanje nozeva dalibor trkulja"), sr: { name: "set za održavanje sečiva", length: "/", handle: "/", steel: "/", sheath: "/" }, en: { name: "blade maintenance set", length: "/", handle: "/", steel: "/", sheath: "/" } },
+];
+
+export const contactLinks = [
+  {
+    href: site.phoneHref,
+    icon: "mobile",
+    label: site.phoneDisplay,
+  },
+  {
+    href: site.socials.whatsapp,
+    icon: "whatsapp",
+    label: "WhatsApp",
+  },
+  {
+    href: site.socials.viber,
+    icon: "viber",
+    label: "Viber",
+  },
 ];
 
 export function getCategoryByLocaleSlug(locale: Locale, slug: string) {

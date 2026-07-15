@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MobileMenu } from "./MobileMenu";
-import { categories, copy, Locale, site } from "./data";
+import { categories, contactLinks, copy, Locale, site } from "./data";
 
 const localePaths = {
   en: {
@@ -142,17 +142,47 @@ export function ContactSection({
       <SectionTitle>{t.contactTitle}</SectionTitle>
 
       <div className="mx-auto w-full max-w-[1080px]">
-        <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[32px] bg-[#eeeeee] max-md:aspect-[4/3] max-md:rounded-[22px]">
-          <iframe
-            className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
-            src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
-            title="Dalibor Trkulja workshop map"
-            loading="lazy"
-          />
+        {/* Mobile: map + let's talk in a single unified card */}
+        <div className="hidden overflow-hidden rounded-[24px] max-md:block">
+          <div className="relative aspect-[4/3] w-full">
+            <iframe
+              className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
+              src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
+              title="Dalibor Trkulja workshop map"
+              loading="lazy"
+            />
+          </div>
+          <TalkCard locale={locale} className="" />
         </div>
-        <div className="mt-12 grid grid-cols-2 gap-10 max-md:mt-10 max-md:grid-cols-1 max-md:gap-8">
+
+        <div className="hidden max-md:mt-8 max-md:grid max-md:grid-cols-1 max-md:gap-8">
           <ContactDetails locale={locale} />
           <FollowDetails locale={locale} />
+        </div>
+
+        {/* Desktop: map beside contact details */}
+        <div className="grid grid-cols-2 gap-10 max-md:hidden">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[32px] bg-[#eeeeee]">
+            <iframe
+              className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
+              src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
+              title="Dalibor Trkulja workshop map"
+              loading="lazy"
+            />
+          </div>
+          <div className="grid gap-10">
+            <ContactDetails locale={locale} />
+            <FollowDetails locale={locale} />
+          </div>
+        </div>
+
+        <div className="mt-16 max-md:hidden">
+          <p className="text-base leading-relaxed text-white/90">
+            {t.contactDescription}
+          </p>
+          <div className="mt-16">
+            <TalkCard locale={locale} />
+          </div>
         </div>
       </div>
 
@@ -160,6 +190,47 @@ export function ContactSection({
         <Footer locale={locale} />
       </div>
     </section>
+  );
+}
+
+function TalkCard({
+  locale,
+  className = "rounded-[22px]",
+}: {
+  locale: Locale;
+  className?: string;
+}) {
+  const t = copy[locale];
+
+  return (
+    <div
+      className={`bg-[#3a3a3a] px-6 py-12 text-center md:flex md:items-center md:justify-between md:gap-10 md:px-10 md:text-left ${className}`}
+    >
+      <div>
+        <h3 className="font-enigma text-[28px] font-normal leading-none lowercase md:text-[28px]">
+          {t.talk}
+        </h3>
+        <p className="mt-4 text-[20px] text-white/80 md:mt-2 md:max-w-[300px]">
+          {t.talkSubtitle}
+        </p>
+      </div>
+      <div className="mt-6 flex items-center justify-center gap-3 md:mt-0 md:justify-start">
+        {contactLinks.map((link) => (
+          <a
+            className="inline-flex size-12 items-center justify-center rounded-full transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/70 md:size-14"
+            href={link.href}
+            aria-label={link.label}
+            key={link.icon}
+          >
+            <img
+              className="size-10 md:size-12"
+              src={`/assets/icons/${link.icon}.svg`}
+              alt=""
+            />
+          </a>
+        ))}
+      </div>
+    </div>
   );
 }
 

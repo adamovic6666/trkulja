@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { contactLinks } from "./ContactPopup";
-import { copy, type Locale, type Product } from "./data";
+import { contactLinks, copy, type Locale, type Product } from "./data";
 import { useBodyScrollLock } from "./useBodyScrollLock";
 
 const uiText = "font-enigma font-normal lowercase";

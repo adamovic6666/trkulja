@@ -2,26 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { copy, site, type Locale } from "./data";
+import { contactLinks, copy, type Locale } from "./data";
 import { useBodyScrollLock } from "./useBodyScrollLock";
-
-export const contactLinks = [
-  {
-    href: site.phoneHref,
-    icon: "mobile",
-    label: site.phoneDisplay,
-  },
-  {
-    href: site.socials.whatsapp,
-    icon: "whatsapp",
-    label: "WhatsApp",
-  },
-  {
-    href: site.socials.viber,
-    icon: "viber",
-    label: "Viber",
-  },
-];
 
 export function ContactPopup({
   locale,
