@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { CookieSettingsButton } from "./CookieSettingsButton";
 import { MobileMenu } from "./MobileMenu";
 import { categories, copy, Locale, site } from "./data";
 
@@ -241,10 +240,6 @@ export function Footer({ locale }: { locale: Locale }) {
         <Link className="underline max-md:block" href={paths.privacy}>
           {copy[locale].privacy}
         </Link>
-        <span className="max-md:hidden">|</span>
-        <CookieSettingsButton
-          label={locale === "sr" ? "Podešavanja kolačića" : "Cookie settings"}
-        />
       </div>
     </footer>
   );
