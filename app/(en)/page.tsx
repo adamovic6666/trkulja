@@ -105,9 +105,7 @@ export default function HomePage() {
               alt=""
             />
             <div className="grid content-center gap-7 px-14 py-10 max-md:justify-items-center max-md:px-6 max-md:py-8 max-md:text-center">
-              <h3
-                className={`${styles.uiText} m-0 text-[clamp(28px,2.5vw,34px)] leading-tight`}
-              >
+              <h3 className={`${styles.uiText} m-0 text-[28px] leading-tight`}>
                 {t.videoTitle}
               </h3>
               <a

@@ -141,12 +141,12 @@ export function ContactSection({
     >
       <SectionTitle>{t.contactTitle}</SectionTitle>
 
-      <div className="mx-auto w-full max-w-[1080px]">
+      <div className="mx-auto w-full max-w-[960px]">
         {/* Mobile: map + let's talk in a single unified card */}
-        <div className="hidden overflow-hidden rounded-[24px] max-md:block">
+        <div className="hidden overflow-hidden rounded-3xl max-md:block">
           <div className="relative aspect-[4/3] w-full">
             <iframe
-              className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
+              className="absolute rounded-t-3xl inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
               src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
               title="Dalibor Trkulja workshop map"
               loading="lazy"
@@ -162,7 +162,7 @@ export function ContactSection({
 
         {/* Desktop: map beside contact details */}
         <div className="grid grid-cols-2 gap-10 max-md:hidden">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[32px] bg-[#eeeeee]">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[#eeeeee]">
             <iframe
               className="absolute inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
               src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
@@ -210,7 +210,7 @@ function TalkCard({
         <h3 className="font-enigma text-[28px] font-normal leading-none lowercase md:text-[28px]">
           {t.talk}
         </h3>
-        <p className="mt-4 text-[20px] text-white/80 md:mt-2 md:max-w-[300px]">
+        <p className="mt-4 text-base text-white/80 md:mt-2 md:max-w-[300px]">
           {t.talkSubtitle}
         </p>
       </div>
@@ -293,7 +293,7 @@ export function Footer({ locale }: { locale: Locale }) {
 
   return (
     <footer className="relative pb-4 md:pb-0 text-[12px] text-white">
-      <div className="mx-auto flex w-full max-w-[1080px] items-center justify-center gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
+      <div className="mx-auto flex w-full max-w-[960px] items-center justify-center gap-5 max-md:flex-col max-md:gap-3 max-md:text-center">
         <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 max-md:flex-col max-md:gap-3">
           <span>
             Copyright © 2021-2026 Dalibor Trkulja. All rights reserved
