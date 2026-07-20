@@ -143,10 +143,10 @@ export function ContactSection({
 
       <div className="mx-auto w-full max-w-[960px]">
         {/* Mobile: map + let's talk in a single unified card */}
-        <div className="hidden overflow-hidden rounded-3xl max-md:block">
+        <div className="hidden overflow-hidden rounded-3xl max-md:block bg-[#3a3a3a]">
           <div className="relative aspect-[4/3] w-full">
             <iframe
-              className="absolute rounded-t-3xl inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
+              className="absolute rounded-3xl inset-0 h-full w-full grayscale [filter:grayscale(1)_contrast(.78)_brightness(1.14)]"
               src="https://maps.google.com/maps?q=Krajiska%204%2C%20Indjija%2C%20Serbia&z=15&output=embed"
               title="Dalibor Trkulja workshop map"
               loading="lazy"

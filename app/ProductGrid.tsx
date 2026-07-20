@@ -48,7 +48,8 @@ export function ProductGrid({
           locale={locale}
           products={products}
           index={activeIndex}
-          onClose={() => setActiveIndex(null)}
+          onRequestClose={() => window.history.back()}
+          onClosed={() => setActiveIndex(null)}
           onNavigate={setActiveIndex}
         />
       ) : null}
@@ -60,13 +61,15 @@ function ProductModal({
   locale,
   products,
   index,
-  onClose,
+  onRequestClose,
+  onClosed,
   onNavigate,
 }: {
   locale: Locale;
   products: Product[];
   index: number;
-  onClose: () => void;
+  onRequestClose: () => void;
+  onClosed: () => void;
   onNavigate: (index: number) => void;
 }) {
   const t = copy[locale];
@@ -77,8 +80,19 @@ function ProductModal({
   useBodyScrollLock(true);
 
   useEffect(() => {
+    window.history.pushState({ productModal: true }, "");
+
+    function onPopState() {
+      onClosed();
+    }
+
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, [onClosed]);
+
+  useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") onRequestClose();
       if (event.key === "ArrowLeft") {
         onNavigate((index - 1 + products.length) % products.length);
       }
@@ -89,7 +103,7 @@ function ProductModal({
 
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
-  }, [index, products.length, onClose, onNavigate]);
+  }, [index, products.length, onRequestClose, onNavigate]);
 
   return createPortal(
     <div
@@ -97,13 +111,13 @@ function ProductModal({
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
-          onClose();
+          onRequestClose();
         }
       }}
     >
       {products.length > 1 ? (
         <button
-          className="fixed left-4 top-1/2 z-10 hidden size-10 -translate-y-1/2 place-items-center text-white/80 transition hover:text-white md:left-8 md:grid"
+          className="fixed left-4 top-1/2 z-10 hidden size-8 -translate-y-1/2 place-items-center rounded-full bg-white text-black/70 shadow-md transition hover:text-black md:left-8 md:grid"
           type="button"
           aria-label={
             locale === "sr" ? "Prethodni proizvod" : "Previous product"
@@ -123,10 +137,10 @@ function ProductModal({
         aria-label={item.name}
       >
         <button
-          className="absolute right-4 top-4 z-10 grid size-8 place-items-center rounded-full bg-black/40 text-white/90 transition hover:text-white"
+          className="absolute right-4 top-4 z-10 grid size-8 place-items-center rounded-full bg-white text-black/70 shadow-md transition hover:text-black"
           type="button"
           aria-label={locale === "sr" ? "Zatvori" : "Close"}
-          onClick={onClose}
+          onClick={onRequestClose}
         >
           <span
             className="absolute h-[1.5px] w-4 rotate-45 bg-current"
@@ -148,7 +162,7 @@ function ProductModal({
           {products.length > 1 ? (
             <>
               <button
-                className="absolute left-2 top-1/2 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-black/40 text-white/90 transition hover:text-white md:hidden"
+                className="absolute left-2 top-1/2 z-10 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-white text-black/70 shadow-md transition hover:text-black md:hidden"
                 type="button"
                 aria-label={
                   locale === "sr" ? "Prethodni proizvod" : "Previous product"
@@ -160,7 +174,7 @@ function ProductModal({
                 <ChevronIcon direction="left" />
               </button>
               <button
-                className="absolute right-2 top-1/2 z-10 grid size-9 -translate-y-1/2 place-items-center rounded-full bg-black/40 text-white/90 transition hover:text-white md:hidden"
+                className="absolute right-2 top-1/2 z-10 grid size-8 -translate-y-1/2 place-items-center rounded-full bg-white text-black/70 shadow-md transition hover:text-black md:hidden"
                 type="button"
                 aria-label={
                   locale === "sr" ? "Sledeći proizvod" : "Next product"
@@ -179,15 +193,15 @@ function ProductModal({
               {item.name}
             </h3>
 
-            <div className="flex items-center justify-between gap-4 md:block">
-              <dl className="m-0 grid gap-1 text-left text-sm text-white/70">
+            <div className="flex justify-between gap-4 md:block">
+              <dl className="m-0 gap-1 text-left text-sm text-white/70 flex flex-col">
                 <Spec label={labels.length} value={item.length} />
                 <Spec label={labels.handle} value={item.handle} />
                 <Spec label={labels.steel} value={item.steel} />
                 <Spec label={labels.sheath} value={item.sheath} />
               </dl>
 
-              <div className="flex shrink-0 flex-col items-center gap-0.5 md:hidden">
+              <div className="flex shrink-0 flex-col items-center gap-2 md:hidden">
                 {contactLinks.map((link) => (
                   <ContactIcon key={link.icon} link={link} />
                 ))}
@@ -210,7 +224,7 @@ function ProductModal({
 
       {products.length > 1 ? (
         <button
-          className="fixed right-4 top-1/2 z-10 hidden size-10 -translate-y-1/2 place-items-center text-white/80 transition hover:text-white md:right-8 md:grid"
+          className="fixed right-4 top-1/2 z-10 hidden size-8 -translate-y-1/2 place-items-center rounded-full bg-white text-black/70 shadow-md transition hover:text-black md:right-8 md:grid"
           type="button"
           aria-label={locale === "sr" ? "Sledeći proizvod" : "Next product"}
           onClick={() => onNavigate((index + 1) % products.length)}
@@ -226,7 +240,7 @@ function ProductModal({
 function ContactIcon({ link }: { link: (typeof contactLinks)[number] }) {
   return (
     <a
-      className="inline-flex size-8 items-center justify-center rounded-full transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/70 md:size-11"
+      className="inline-flex size-6 items-center justify-center rounded-full transition hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/70 md:size-11"
       href={link.href}
       aria-label={link.label}
     >
@@ -253,7 +267,7 @@ function Spec({ label, value }: { label: string; value: string }) {
 function ChevronIcon({ direction }: { direction: "left" | "right" }) {
   return (
     <svg
-      className="size-8"
+      className="size-5"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
