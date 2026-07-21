@@ -92,18 +92,47 @@ $rows = [
     ["Name", $name],
     ["Email", $email],
     ["Reason", $reasonLabel],
-    ["Subject", $subject],
-    ["Locale", $locale],
+    ["Locale", strtoupper($locale)],
 ];
 $rowsHtml = "";
 foreach ($rows as $row) {
-    $rowsHtml .= "<p><strong>" . escapeHtml($row[0]) . ":</strong> " . escapeHtml($row[1]) . "</p>";
+    $rowsHtml .= '<tr>'
+        . '<td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; width: 110px; vertical-align: top;">'
+        . escapeHtml($row[0])
+        . '</td>'
+        . '<td style="padding: 10px 0; border-bottom: 1px solid #eeeeee; color: #262626; font-size: 15px; vertical-align: top;">'
+        . escapeHtml($row[1])
+        . '</td></tr>';
 }
-$html = '<div style="font-family: Georgia, serif; line-height: 1.5; color: #111;">'
-    . '<h1 style="font-size: 22px;">New contact form message</h1>'
-    . $rowsHtml
-    . '<hr style="border: 0; border-top: 1px solid #ddd; margin: 20px 0;" />'
-    . '<p style="white-space: pre-line;">' . escapeHtml($message) . "</p></div>";
+
+$html = '<!doctype html><html><body style="margin: 0; padding: 0; background-color: #f2f2f2; font-family: Georgia, \'Times New Roman\', serif;">'
+    . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f2f2f2; padding: 32px 16px;">'
+    . '<tr><td align="center">'
+    . '<table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width: 560px; width: 100%; background-color: #ffffff; border-radius: 20px; overflow: hidden;">'
+
+    // Header bar
+    . '<tr><td style="background-color: #000000; padding: 24px 32px;">'
+    . '<span style="color: #ffffff; font-size: 18px; letter-spacing: 0.04em;">dalibor trkulja</span>'
+    . '</td></tr>'
+
+    // Body
+    . '<tr><td style="padding: 32px;">'
+    . '<p style="margin: 0 0 4px; color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;">New contact form message</p>'
+    . '<h1 style="margin: 0 0 24px; color: #000000; font-size: 21px; font-weight: normal;">' . escapeHtml($subject) . '</h1>'
+    . '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">' . $rowsHtml . '</table>'
+    . '<p style="margin: 0 0 8px; color: #666666; font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;">Message</p>'
+    . '<p style="margin: 0; color: #262626; font-size: 15px; line-height: 1.6; white-space: pre-line;">' . escapeHtml($message) . '</p>'
+    . '</td></tr>'
+
+    // Footer
+    . '<tr><td style="padding: 20px 32px; background-color: #f7f7f7; border-top: 1px solid #eeeeee;">'
+    . '<p style="margin: 0; color: #999999; font-size: 12px;">Sent from the contact form at trkulja.rs</p>'
+    . '</td></tr>'
+
+    . '</table>'
+    . '</td></tr>'
+    . '</table>'
+    . '</body></html>';
 
 $payload = json_encode([
     "from" => CONTACT_EMAIL_FROM,
