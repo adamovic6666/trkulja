@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteUrl as baseUrl } from "./siteConfig";
 
+export const dynamic = "force-static";
+
 const routes = [
   {
     path: "/",

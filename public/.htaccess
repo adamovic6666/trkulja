@@ -1,0 +1,26 @@
+RewriteEngine On
+
+# Force www-less HTTPS
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+
+# Legacy sitemap URLs
+RewriteRule ^sitemap_index\.xml$ /sitemap.xml [L,R=301]
+RewriteRule ^page-sitemap\.xml$ /sitemap.xml [L,R=301]
+
+# Default landing locale
+RewriteRule ^$ /sr/ [L,R=302]
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+</IfModule>

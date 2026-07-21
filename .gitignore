@@ -3,6 +3,7 @@ out
 node_modules
 .env*
 !.env.example
+public/contact-config.php
 npm-debug.log*
 pnpm-debug.log*
 yarn-debug.log*
