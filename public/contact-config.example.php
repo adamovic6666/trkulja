@@ -6,4 +6,5 @@
 
 define("RESEND_API_KEY", "re_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 define("CONTACT_EMAIL_TO", "trkulja.dalibor@gmail.com");
-define("CONTACT_EMAIL_FROM", "Dalibor Trkulja <noreply@trkulja.rs>");
+// Must be on a domain verified in Resend (Domains tab) - currently mailer.trkulja.rs, not the bare trkulja.rs.
+define("CONTACT_EMAIL_FROM", "Dalibor Trkulja <noreply@mailer.trkulja.rs>");
