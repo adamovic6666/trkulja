@@ -46,7 +46,7 @@ export function ContactForm({ locale }: { locale: Locale }) {
   async function onSubmit(values: ContactFormFields) {
     setStatus("idle");
 
-    const response = await fetch("/api/contact", {
+    const response = await fetch("/contact.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
