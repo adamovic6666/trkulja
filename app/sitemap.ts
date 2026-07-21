@@ -47,9 +47,12 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
   return routes.flatMap(({ path, alternate, changeFrequency, priority }) => [
     {
       url: `${baseUrl}${path}`,
+      lastModified,
       changeFrequency,
       priority,
       alternates: {
@@ -61,6 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}${alternate}`,
+      lastModified,
       changeFrequency,
       priority,
       alternates: {

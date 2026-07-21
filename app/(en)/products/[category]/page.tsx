@@ -11,6 +11,7 @@ import {
 import { HomeScrollLayers } from "../../../HomeScrollLayers";
 import { ProductGrid } from "../../../ProductGrid";
 import { createPageMetadata } from "../../../metadata";
+import { getBreadcrumbJsonLd, JsonLd } from "../../../structuredData";
 
 const categories: CategorySlug[] = ["knives", "axes", "other-products"];
 
@@ -54,6 +55,13 @@ export default async function ProductCategoryPage({
 
   return (
     <main className="pt-40 md:pt-48">
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Home", url: "/" },
+          { name: "Products", url: "/products/" },
+          { name: copy[locale].categoryTitles[category], url: `/products/${category}/` },
+        ])}
+      />
       <HomeScrollLayers />
       <section className="bg-black pb-12 md:pb-20 home-panel relative z-[1]">
         <div className={styles.container}>

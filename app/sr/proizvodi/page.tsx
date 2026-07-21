@@ -7,6 +7,7 @@ import {
 import { copy, meta } from "../../data";
 import { HomeScrollLayers } from "../../HomeScrollLayers";
 import { createPageMetadata } from "../../metadata";
+import { getBreadcrumbJsonLd, JsonLd } from "../../structuredData";
 
 export const metadata = createPageMetadata({
   title: meta.sr.products.title,
@@ -21,6 +22,12 @@ export default function SerbianProductsPage() {
 
   return (
     <main>
+      <JsonLd
+        data={getBreadcrumbJsonLd([
+          { name: "Početna", url: "/sr/" },
+          { name: "Proizvodi", url: "/sr/proizvodi/" },
+        ])}
+      />
       <HomeScrollLayers />
       <section className="home-panel relative z-[1] grid min-h-dvh content-start bg-black px-8 pb-24 pt-40 md:pb-32 md:pt-48 max-md:px-5">
         <div className={styles.container}>
