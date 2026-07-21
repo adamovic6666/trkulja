@@ -1,5 +1,6 @@
 .next
 out
+trkulja-site.zip
 node_modules
 .env*
 !.env.example
